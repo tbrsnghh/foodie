@@ -1,0 +1,12 @@
+Pages:
+    - Home: landing
+        [
+            header
+            main 
+                
+            footer
+        ]
+    - Danh sách sản phẩm: lọc sản phẩm theo categories, nhà hàng, địa  chỉ?
+    - Chi tiết sản phẩm
+    - Cửa hàng
+    - giỏi hàng, chức năng thanh toán
