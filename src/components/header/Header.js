@@ -1,11 +1,11 @@
-import React, { useState, Image } from "react";
+import React, { useState, Image, useEffect } from "react";
 import { Button, Grid, Menu, Space, theme } from "antd";
 import { MenuOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
-
+import {fetchRestaurants} from '../../store/features/food/foodSlice'
 //file
 
 export default function App() {
@@ -13,7 +13,9 @@ export default function App() {
   const food = useSelector((state) => state.food);
   const { token } = useToken();
   const screens = useBreakpoint();
-
+  useEffect(() => {
+    dispatch(fetchRestaurants());
+  }, []);
   const menuItems = [
     {
       label: <Link to="/RES01">Restaurants</Link>,
