@@ -1,0 +1,168 @@
+{  
+  "food": [  
+    {  
+      "categories": "chicken",  
+      "items": [  
+        {  
+          "id": "CH01",  
+          "name": "Cánh gà chiên",  
+          "price": 80000,  
+          "res_id": "RES01",  
+          "desc": "Cánh gà chiên ngon lắm",  
+          "img": ""  
+        },  
+        {  
+          "id": "CH02",  
+          "name": "Đùi gà chiên",  
+          "price": 180000,  
+          "res_id": "RES02",  
+          "desc": "Đùi gà chiên cx ngon lắm",  
+          "img": ""  
+        }  
+      ]  
+    },  
+    {  
+      "categories": "pizza",  
+      "items": []  
+    },  
+    {  
+      "categories": "breakfast",  
+      "items": []  
+    },  
+    {  
+      "categories": "Cơm",  
+      "items": []  
+    },  
+    {  
+      "categories": "Cháo",  
+      "items": []  
+    },  
+    {  
+      "categories": "Ăn vặt",  
+      "items": []  
+    },  
+    {  
+      "categories": "Rau trộn",  
+      "items": []  
+    },  
+    {  
+      "categories": "Cơm tấm",  
+      "items": []  
+    }  
+  ],  
+  "drinks": [  
+    {  
+      "categories": "soft drinks",  
+      "items": [  
+        {  
+          "id": "D01",  
+          "name": "Coca Cola",  
+          "price": 15000,  
+          "res_id": "RES03",  
+          "desc": "Nước ngọt Coca Cola mát lạnh",  
+          "img": ""  
+        },  
+        {  
+          "id": "D02",  
+          "name": "Pepsi",  
+          "price": 15000,  
+          "res_id": "RES03",  
+          "desc": "Nước ngọt Pepsi tươi mát",  
+          "img": ""  
+        }  
+      ]  
+    },  
+    {  
+      "categories": "alcoholic beverages",  
+      "items": [  
+        {  
+          "id": "D03",  
+          "name": "Bia Tiger",  
+          "price": 20000,  
+          "res_id": "RES04",  
+          "desc": "Bia Tiger giải khát",  
+          "img": ""  
+        },  
+        {  
+          "id": "D04",  
+          "name": "Rượu vang",  
+          "price": 250000,  
+          "res_id": "RES05",  
+          "desc": "Rượu vang ngon miệng",  
+          "img": ""  
+        }  
+      ]  
+    },  
+    {  
+      "categories": "fresh juices",  
+      "items": [  
+        {  
+          "id": "D05",  
+          "name": "Nước cam tươi",  
+          "price": 30000,  
+          "res_id": "RES06",  
+          "desc": "Nước cam tươi mát bổ",  
+          "img": ""  
+        },  
+        {  
+          "id": "D06",  
+          "name": "Nước ép táo",  
+          "price": 30000,  
+          "res_id": "RES06",  
+          "desc": "Nước ép táo thơm ngon",  
+          "img": ""  
+        }  
+      ]  
+    }  
+  ],  
+  "restaurants": [  
+    {  
+      "name": "Nhà hàng Đông Dương",  
+      "id": "RES01",  
+      "address": "123 Đường Đông Dương, Quận 1",  
+      "cuisine": "Vietnamese, Dessert",  
+      "rating": 4.5,  
+      "img": ""  
+    },  
+    {  
+      "name": "Pizza Vua",  
+      "id": "RES02",  
+      "address": "456 Đường Pizza, Quận 3",  
+      "cuisine": "Italian",  
+      "rating": 4.7,  
+      "img": ""  
+    },  
+    {  
+      "name": "Quán Ăn Vặt",  
+      "id": "RES03",  
+      "address": "789 Đường Ăn Vặt, Quận 2",  
+      "cuisine": "Snack",  
+      "rating": 4.3,  
+      "img": ""  
+    },  
+    {  
+      "name": "Nhà hàng Hải Sản",  
+      "id": "RES04",  
+      "address": "101 Đường Hải Sản, Quận 4",  
+      "cuisine": "Seafood",  
+      "rating": 4.8,  
+      "img": ""  
+    },  
+    {  
+      "name": "Nem Nướng",  
+      "id": "RES05",  
+      "address": "202 Đường Nem Nướng, Quận 5",  
+      "cuisine": "Vietnamese",  
+      "rating": 4.6,  
+      "img": ""  
+    },  
+    {  
+      "name": "Nhà hàng Rượu Vang",  
+      "id": "RES06",  
+      "address": "303 Đường Rượu Vang, Quận 6",  
+      "cuisine": "Western",  
+      "rating": 4.9,  
+      "img": ""  
+    }  
+  ]  
+}

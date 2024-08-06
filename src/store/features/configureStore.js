@@ -1,9 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import foodie from "./food/foodSlice";
+import food from "./food/foodSlice";
+import catsSlice from "./food/catsSlice";
 
 const store = configureStore({
   reducer: {
-    food: foodie
+    food: food,
+    cats: catsSlice
   },
 });
 export default store;

@@ -1,43 +1,56 @@
-import React, { useState } from "react";
+import React, { useState, Image } from "react";
 import { Button, Grid, Menu, Space, theme } from "antd";
-import { MenuOutlined } from "@ant-design/icons";
+import { MenuOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
 
+//file
+
 export default function App() {
   const dispatch = useDispatch();
-  const foodie = useSelector((state) => state.food);
-  console.log(foodie.food[0].items[0])
+  const food = useSelector((state) => state.food);
   const { token } = useToken();
   const screens = useBreakpoint();
 
   const menuItems = [
     {
-      label: "Projects",
-      key: "projects",
+      label: <Link to="/RES01">Restaurants</Link>,
+      key: "res",
+      children:
+        food.restaurants && food.restaurants.length > 0
+          ? food.restaurants.map((item, index) => ({
+              label: (
+                <Link to={`/res/${item.id}`} index={index}>
+                  {item.name}
+                </Link>
+              ),
+              key: `res:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+            }))
+          : [],
     },
     {
-      label: "Dashboard",
-      key: "dashboard",
+      label: "Food",
+      key: "food",
+      children:
+        food.food && food.food.length > 0
+          ? food.food.map((item, index) => ({
+              label: item.categories,
+              key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+            }))
+          : [],
     },
     {
-      label: "Products",
-      key: "SubMenu",
-      children: [
-        {
-          label: "Ant Design System",
-          key: "product:1",
-        },
-        {
-          label: "Ant Design Charts",
-          key: "product:2",
-        },
-      ],
-    },
-    {
-      label: "Settings",
-      key: "alipay",
+      label: "Drinks",
+      key: "drinks",
+      children:
+        food.drinks && food.drinks.length > 0
+          ? food.drinks.map((item, index) => ({
+              label: item.categories,
+              key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+            }))
+          : [],
     },
   ];
 
@@ -53,6 +66,7 @@ export default function App() {
       display: "flex",
       justifyContent: "space-between",
       margin: "0 auto",
+      // backgroundColor: "black",
       maxWidth: token.screenXL,
       padding: screens.md
         ? `0px ${token.paddingLG}px`
@@ -67,6 +81,13 @@ export default function App() {
       display: "block",
       height: token.sizeLG,
       left: "50%",
+      position: screens.md ? "static" : "absolute",
+      top: "50%",
+      transform: screens.md ? " " : "translate(-50%, -50%)",
+    },
+    cart: {
+      fontSize: screens.md? "28px" : "24px", color: "#08c",
+      right: "0%",
       position: screens.md ? "static" : "absolute",
       top: "50%",
       transform: screens.md ? " " : "translate(-50%, -50%)",
@@ -87,26 +108,37 @@ export default function App() {
   };
 
   return (
-    <nav style={styles.header}>
-      <div style={styles.container}>
-        <div style={styles.menuContainer}>
-          <Menu
-            style={styles.menu}
-            mode="horizontal"
-            items={menuItems}
-            onClick={onClick}
-            selectedKeys={screens.md ? [current] : ""}
-            overflowedIndicator={
-              <Button type="text" icon={<MenuOutlined />}></Button>
-            }
-          />
+    <>
+      <nav style={styles.header}>
+        <div style={styles.container}>
+          <div style={styles.logo}>
+            <Space>
+              <img
+                style={styles.logo}
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe2TJJqxfGIUBS5On3nRz7mILU8zvMBKJu5g&s"
+                alt="Logo"
+              />
+            </Space>
+          </div>
+          <div style={styles.menuContainer}>
+            <Menu
+              style={styles.menu}
+              mode="horizontal"
+              items={menuItems}
+              onClick={onClick}
+              selectedKeys={screens.md ? [current] : ""}
+              overflowedIndicator={
+                <Button type="text" icon={<MenuOutlined />}></Button>
+              }
+            />
+          </div>
+          <Space>
+            {screens.md ? <Button type="text">Log in</Button> : ""}
+            {/* <Button type="primary">Sign in</Button> */}
+            <ShoppingCartOutlined style={styles.cart} />
+          </Space>
         </div>
-        <h1>{foodie.food[0].categories}</h1>
-        <Space>
-          {screens.md ? <Button type="text">Log in</Button> : ""}
-          <Button type="primary">Sign up</Button>
-        </Space>
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }

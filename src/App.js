@@ -1,16 +1,14 @@
-import React from 'react';
-import { Button, Space, DatePicker, version } from 'antd';
-import Header from './components/header/Header';
-
+import React from "react";
+import { BrowserRouter, HashRouter, Route, Router, Routes } from "react-router-dom";
+import Restaurants from "./components/restaurants/Restaurants";
+import Home from "./components/home/Home";
 const App = () => (
-  <div style={{ padding: '0 24px' }}>
-    <Header/>
-    <h1>antd version: {version}</h1>
-    <Space>
-      <DatePicker />
-      <Button type="primary">Primary Button</Button>
-    </Space>
-  </div>
+  <HashRouter>
+    <Routes>
+      <Route index element={<Home />}></Route>
+      <Route path="/res/:index" element={<Restaurants />} />
+    </Routes>
+  </HashRouter>
 );
 
 export default App;
