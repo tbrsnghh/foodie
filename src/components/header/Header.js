@@ -37,8 +37,8 @@ export default function App() {
       label: "Food",
       key: "food",
       children:
-        food.food && food.food.length > 0
-          ? food.food.map((item, index) => ({
+        food && food.length > 0
+          ? food.map((item, index) => ({
               label: item.categories,
               key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
             }))
@@ -48,8 +48,8 @@ export default function App() {
       label: "Drinks",
       key: "drinks",
       children:
-        food.drinks && food.drinks.length > 0
-          ? food.drinks.map((item, index) => ({
+        drinks && drinks.length > 0
+          ? drinks.map((item, index) => ({
               label: item.categories,
               key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
             }))

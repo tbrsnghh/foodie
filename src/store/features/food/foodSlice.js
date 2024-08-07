@@ -10,11 +10,12 @@ const initialState = {
 };  
 
 // Get restaurants from API  
-const urlRestaurants = "https://foodie-api-vetn.onrender.com/restaurants";  
+//const url="http://localhost:3000/"
+const url = "https://my-json-server.typicode.com/tbrsnghh/BackToTheDrawingBoardJsonServer/db";  
 export const fetchRestaurants = createAsyncThunk(  
   'food/fetchRestaurants',  
   async () => {  
-    const res = await axios.get(urlRestaurants);  
+    const res = await axios.get(url);  
     return res.data;  
   }  
 );  
@@ -30,7 +31,9 @@ const foodSlice = createSlice({
       })  
       .addCase(fetchRestaurants.fulfilled, (state, action) => {  
         state.status = "succeeded";  
-        state.restaurants = action.payload;  
+        state.food = action.payload.food; 
+        state.restaurants = action.payload.restaurants;  
+        state.drinks = action.payload.drinks; 
       })  
       .addCase(fetchRestaurants.rejected, (state, action) => {  
         state.status = "failed";  

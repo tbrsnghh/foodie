@@ -3,7 +3,14 @@ Pages:
         [
             header
             main 
-                
+                Home
+                    promotions
+                    danh mục 
+                    about
+                cart thanh toán 
+                search 
+                food list 
+                trang nhà hàng
             footer
         ]
     - Danh sách sản phẩm: lọc sản phẩm theo categories, nhà hàng, địa  chỉ?
