@@ -3,26 +3,27 @@ import { Button, Grid, Menu, Space, theme } from "antd";
 import { MenuOutlined, ShoppingCartOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import {fetchRestaurants} from '../../store/features/food/foodSlice'
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
-import {fetchRestaurants} from '../../store/features/food/foodSlice'
-//file
 
 export default function App() {
   const dispatch = useDispatch();
-  const food = useSelector((state) => state.food);
-  const { token } = useToken();
-  const screens = useBreakpoint();
   useEffect(() => {
     dispatch(fetchRestaurants());
   }, []);
+  const {food, drinks, restaurants} = useSelector((state) => state.food);
+  console.log(food)
+  const { token } = useToken();
+  const screens = useBreakpoint();
+
   const menuItems = [
     {
       label: <Link to="/RES01">Restaurants</Link>,
       key: "res",
       children:
-        food.restaurants && food.restaurants.length > 0
-          ? food.restaurants.map((item, index) => ({
+      restaurants && restaurants.length > 0
+          ? restaurants.map((item, index) => ({
               label: (
                 <Link to={`/res/${item.id}`} index={index}>
                   {item.name}
