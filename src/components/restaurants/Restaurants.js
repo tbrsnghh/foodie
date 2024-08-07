@@ -9,12 +9,13 @@ export default function Restaurants(props) {
   const index = useParams().index;
   console.log(index);
   // Thay đổi thành ID của nhà hàng bạn muốn lấy
-  const food = useSelector((state) => state.record.restaurants)
+  const food = useSelector((state) => state.food.restaurants)
   const restaurant = food.find(
-    (res) => res.restaurant_id === 1
+    (res) => res.id === index
   );
-  
-
+  console.log("nhà hàng")
+  console.log(restaurant.foodmenu[0].items)
+  const f = restaurant.foodmenu[0].items
   return (
     <>
       <Header />
@@ -35,7 +36,7 @@ export default function Restaurants(props) {
           )}
           </div>
         </section>
-        <Swiper food={restaurant.menu} />
+        <Swiper food={f} />
       </Layout.Content>
     </>
   );

@@ -12,8 +12,8 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchRestaurants());
   }, []);
-  const {food, drinks, restaurants} = useSelector((state) => state.food);
-  console.log(food)
+  const {restaurants} = useSelector((state) => state.food);
+  
   const { token } = useToken();
   const screens = useBreakpoint();
 
@@ -33,28 +33,28 @@ export default function App() {
             }))
           : [],
     },
-    {
-      label: "Food",
-      key: "food",
-      children:
-        food && food.length > 0
-          ? food.map((item, index) => ({
-              label: item.categories,
-              key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
-            }))
-          : [],
-    },
-    {
-      label: "Drinks",
-      key: "drinks",
-      children:
-        drinks && drinks.length > 0
-          ? drinks.map((item, index) => ({
-              label: item.categories,
-              key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
-            }))
-          : [],
-    },
+    // {
+    //   label: "Food",
+    //   key: "food",
+    //   children:
+    //     food && food.length > 0
+    //       ? food.map((item, index) => ({
+    //           label: item.categories,
+    //           key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+    //         }))
+    //       : [],
+    // },
+    // {
+    //   label: "Drinks",
+    //   key: "drinks",
+    //   children:
+    //     drinks && drinks.length > 0
+    //       ? drinks.map((item, index) => ({
+    //           label: item.categories,
+    //           key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+    //         }))
+    //       : [],
+    // },
   ];
 
   const [current, setCurrent] = useState("projects");

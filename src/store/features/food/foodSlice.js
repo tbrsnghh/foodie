@@ -10,8 +10,10 @@ const initialState = {
 };  
 
 // Get restaurants from API  
-//const url="http://localhost:3000/"
-const url = "https://api.jsonbin.io/v3/qs/66b33e3ead19ca34f892a160";  
+//Glitch
+const url="https://receptive-tested-cowl.glitch.me/restaurants"   
+// Render
+// const url = "https://food-api-skwh.onrender.com/restaurants";  
 export const fetchRestaurants = createAsyncThunk(  
   'food/fetchRestaurants',  
   async () => {  
@@ -31,8 +33,7 @@ const foodSlice = createSlice({
       })  
       .addCase(fetchRestaurants.fulfilled, (state, action) => {  
         state.status = "succeeded";  
-        
-        state.restaurants = action.payload.record.restaurants;  
+        state.restaurants = action.payload;  
          
       })  
       .addCase(fetchRestaurants.rejected, (state, action) => {  

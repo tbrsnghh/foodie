@@ -42,11 +42,12 @@ const FoodSlider = ({ food }) => {
       },
     ],
   };
-
+  console.log("food")
+  console.log(food)
   return (
     <Slider {...settings}>
       {food.length > 0 &&
-        food[0].items.map((item, index) => (
+        food.map((item, index) => (
           <Space key={index}>
             <Card
               hoverable
@@ -74,6 +75,7 @@ const FoodSlider = ({ food }) => {
           </Space>
         ))}
     </Slider>
+
   );
 };
 

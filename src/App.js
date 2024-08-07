@@ -1,14 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter, HashRouter, Route, Router, Routes } from "react-router-dom";
 import Restaurants from "./components/restaurants/Restaurants";
 import Home from "./pages/home/Home";
-const App = () => (
-  <HashRouter>
+import { useDispatch, useSelector } from "react-redux";
+import { fetchRestaurants } from "./store/features/food/foodSlice";
+import Aos from "aos";
+
+export default function App() {
+  const { restaurants } = useSelector((state) => state.food);
+  // useSelector phaair owr truoec cái load fetch
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchRestaurants());
+    Aos.init({ duration: 1000 });
+  }, []);
+  return (
+    <HashRouter>
     <Routes>
-      <Route index element={<Home />}></Route>
-      <Route path="/res/:index" element={<Restaurants />} />
+      <Route index element={<Home restaurants={restaurants}/>}></Route>
+      <Route path="/res/:index" element={<Restaurants restaurants={restaurants} />} />
     </Routes>
   </HashRouter>
-);
-
-export default App;
+  )
+}

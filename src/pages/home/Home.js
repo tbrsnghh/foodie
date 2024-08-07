@@ -19,13 +19,16 @@ import Swiper from "../../components/swiper/Swiper";
 import Aos from "aos";
 
 export default function Home() {
+  // Hiện đang props state từ App.js qua, chứ không dùng đoạn comments bên dưới?
+  const { restaurants } = useSelector((state) => state.food);
+  // // useSelector phaair owr truoec cái load fetch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRestaurants());
     Aos.init({ duration: 1000 });
   }, []);
-  const { food, drinks, restaurants } = useSelector((state) => state.food);
-  console.log(food);
+  console.log(restaurants)
+  const food = restaurants[0].foodmenu[0].items
   const images = [
     require("../../images/bg_1.jpg"),
     require("../../images/bg_2.jpg"),
@@ -85,7 +88,7 @@ export default function Home() {
           }}
         >
           <h1>Ưu đãi tại <span style={{color:'#ED2B2A'}}>Hồ Chí Minh</span></h1>
-          <Swiper food={food} />
+          <Swiper food={food}/>
         </div>
       </Layout.Content>
     </>
