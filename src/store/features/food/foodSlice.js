@@ -11,7 +11,7 @@ const initialState = {
 
 // Get restaurants from API  
 //const url="http://localhost:3000/"
-const url = "https://my-json-server.typicode.com/tbrsnghh/BackToTheDrawingBoardJsonServer/db";  
+const url = "https://api.jsonbin.io/v3/qs/66b33e3ead19ca34f892a160";  
 export const fetchRestaurants = createAsyncThunk(  
   'food/fetchRestaurants',  
   async () => {  
@@ -31,9 +31,9 @@ const foodSlice = createSlice({
       })  
       .addCase(fetchRestaurants.fulfilled, (state, action) => {  
         state.status = "succeeded";  
-        state.food = action.payload.food; 
-        state.restaurants = action.payload.restaurants;  
-        state.drinks = action.payload.drinks; 
+        
+        state.restaurants = action.payload.record.restaurants;  
+         
       })  
       .addCase(fetchRestaurants.rejected, (state, action) => {  
         state.status = "failed";  
