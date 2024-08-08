@@ -7,8 +7,8 @@ import { fetchRestaurants } from "./store/features/food/foodSlice";
 import Aos from "aos";
 
 export default function App() {
-  const { restaurants } = useSelector((state) => state.food);
-  // useSelector phaair owr truoec cái load fetch
+  const f = useSelector((state) => state.food);
+  // // useSelector phaair owr truoec cái load fetch
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchRestaurants());
@@ -17,8 +17,8 @@ export default function App() {
   return (
     <HashRouter>
     <Routes>
-      <Route index element={<Home restaurants={restaurants}/>}></Route>
-      <Route path="/res/:index" element={<Restaurants restaurants={restaurants} />} />
+      <Route index element={<Home foodie={f}/>}></Route>
+      <Route path="/res/:index" element={<Restaurants foodie={f} />} />
     </Routes>
   </HashRouter>
   )

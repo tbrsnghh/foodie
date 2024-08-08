@@ -17,18 +17,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRestaurants } from "../../store/features/food/foodSlice";
 import Swiper from "../../components/swiper/Swiper";
 import Aos from "aos";
+import SearchBar from "../../components/searchBar/SearchBar";
+import SearchRes from "../../components/searchBar/SearchRes";
 
-export default function Home() {
-  // Hiện đang props state từ App.js qua, chứ không dùng đoạn comments bên dưới?
-  const { restaurants } = useSelector((state) => state.food);
-  // // useSelector phaair owr truoec cái load fetch
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(fetchRestaurants());
-    Aos.init({ duration: 1000 });
-  }, []);
-  console.log(restaurants)
-  const food = restaurants[0].foodmenu[0].items
+export default function Home(props) {
+  const { restaurants } = props.foodie;
   const images = [
     require("../../images/bg_1.jpg"),
     require("../../images/bg_2.jpg"),
@@ -41,7 +34,6 @@ export default function Home() {
         style={{ position: "relative", overflow: "hidden" }}
         data-aos="fade-up"
         data-aos-duration="500"
-        
       >
         <div
           style={{
@@ -67,7 +59,7 @@ export default function Home() {
             </Button>
           </Card>
         </div>
-        <Carousel autoplay draggable>
+        <Carousel autoplay="true" draggable="true">
           {images.map((image, index) => (
             <div key={index}>
               <img
@@ -79,18 +71,35 @@ export default function Home() {
           ))}
         </Carousel>
       </Layout.Content>
-      <Layout.Content style={{ background: "#fff" }}>
-        <div
-          style={{
-            width: " 60%",
-            height: "30em",
-            margin: "0 auto",
-          }}
-        >
-          <h1>Ưu đãi tại <span style={{color:'#ED2B2A'}}>Hồ Chí Minh</span></h1>
-          <Swiper food={food}/>
+
+      <Layout>
+        <div className="sectionContainer">
+          <div>
+            <h1>Nhà hàng</h1>
+            <SearchBar />
+            <SearchRes />
+          </div>
+
+          <div className="sectionContent">
+            <h1>
+              Ưu đãi tại <span style={{ color: "#ED2B2A" }}>Hồ Chí Minh</span>
+            </h1>
+            {restaurants.length > 0 ? (
+              <Swiper food={restaurants[0].foodmenu[0].items} />
+            ) : (
+              <p>No food.</p>
+            )}
+          </div>
         </div>
-      </Layout.Content>
+        <div className="sectionContainer">
+          <div className="sectionContent">
+            <h1>
+              There's <span style={{ color: "#ED2B2A" }}>something</span> for
+              <span style={{ color: "#ED2B2A" }}> everyone ! </span>
+            </h1>
+          </div>
+        </div>
+      </Layout>
     </>
   );
 }

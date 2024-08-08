@@ -8,16 +8,15 @@ import "./swiper.css";
 const FoodSlider = ({ food }) => {
   const settings = {
     dots: true,
-    infinite: false,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 4,
     initialSlide: 0,
     draggable: true,
-
     responsive: [
       {
-        breakpoint: 1024,
+        breakpoint: 1100,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 3,
@@ -26,7 +25,7 @@ const FoodSlider = ({ food }) => {
         },
       },
       {
-        breakpoint: 600,
+        breakpoint: 900,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
@@ -34,7 +33,7 @@ const FoodSlider = ({ food }) => {
         },
       },
       {
-        breakpoint: 480,
+        breakpoint: 620,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -42,8 +41,6 @@ const FoodSlider = ({ food }) => {
       },
     ],
   };
-  console.log("food")
-  console.log(food)
   return (
     <Slider {...settings}>
       {food.length > 0 &&
