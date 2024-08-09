@@ -5,12 +5,7 @@ import Home from "./pages/home/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRestaurants } from "./store/features/food/foodSlice";
 import Aos from "aos";
-<<<<<<< HEAD
-import CategoryRestaurants from "./pages/categoryRestaurants/CategoryRestaurants";
-
-=======
 import CategoryRestaurants from "./pages/categoriesRestaurants/CategoriesRestaurants";
->>>>>>> 88afternoon
 
 export default function App() {
   const f = useSelector((state) => state.food);
