@@ -37,11 +37,14 @@ const foodSlice = createSlice({
   initialState,
   reducers: {
     search(state, action) {
+<<<<<<< HEAD
       console.log("trước");
       console.log(state.filteredRestaurants);
       console.log(action.payload);
 
       state.searchQuery = action.payload;
+=======
+>>>>>>> 88afternoon
       // Tìm bằng tên nhà hàng
       // filteredRestaurants: state.restaurants.filter((restaurant) =>
       //   matchesSearchQuery(restaurant, state.searchQuery)
@@ -66,6 +69,10 @@ const foodSlice = createSlice({
       //     )
       // ),
       // Tìm theo food categories
+<<<<<<< HEAD
+=======
+      state.searchQuery = action.payload;
+>>>>>>> 88afternoon
       state.filteredRestaurants = state.restaurants.filter((restaurant) => {
         return restaurant.foodmenu.some((menu) =>
           menu.categories

@@ -1,7 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import food from "./food/foodSlice";
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 88afternoon
 const saveToLocalStorage = (state) => {  
   try {  
     const serializedState = JSON.stringify(state);  
@@ -22,12 +25,21 @@ const loadFromLocalStorage = () => {
   }  
 };  
 const persistedState = loadFromLocalStorage();
+<<<<<<< HEAD
+=======
+
+>>>>>>> 88afternoon
 const store = configureStore({
   reducer: {
     food: food,
   },
+<<<<<<< HEAD
   preloadedState: persistedState, // Sử dụng persistedState nếu có 
 });  
+=======
+  preloadedState: persistedState,
+});
+>>>>>>> 88afternoon
 store.subscribe(() => {  
   saveToLocalStorage(store.getState());  
 }); 

@@ -101,6 +101,7 @@ export default function Home(props) {
             <Categories/>
           </div>
         </div>
+        
       </Layout>
     </>
   );

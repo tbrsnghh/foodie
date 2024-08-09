@@ -20,15 +20,23 @@ const FoodSlider = ({ food }) => {
         breakpoint: 1100,
         settings: {
           slidesToShow: Math.min(numberOfItems, 3),
+<<<<<<< HEAD
           slidesToScroll: 0,
+=======
+          slidesToScroll: 2,
+>>>>>>> 88afternoon
         },
       },
       {
         breakpoint: 900,
         settings: {
           slidesToShow: Math.min(numberOfItems, 2),
+<<<<<<< HEAD
           slidesToScroll: 2,
           initialSlide: 0,
+=======
+          slidesToScroll: 1,
+>>>>>>> 88afternoon
         },
       },
       {
@@ -54,12 +62,18 @@ const FoodSlider = ({ food }) => {
               }}
               cover={
                 <img
+<<<<<<< HEAD
                   style={{ height: 200,  width: "100%", objectFit: "cover"}}
+=======
+                  style={{ height: 200, width: "100%", objectFit: "cover" }}
+>>>>>>> 88afternoon
                   alt="example"
                   src={item.img}
                 />
               }
-              data-aos="fade-up" data-aos-delay={index * 200}  data-aos-once="false"
+              data-aos="fade-up"
+              data-aos-delay={index * 200}
+              data-aos-once="false"
             >
               <Meta title={item.name} description={food.categories} />
               <p
@@ -71,7 +85,6 @@ const FoodSlider = ({ food }) => {
           </div>
         ))}
     </Slider>
-
   );
 };
 
