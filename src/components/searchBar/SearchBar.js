@@ -3,15 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { search } from "../../store/features/food/foodSlice";
 
 const SearchBar = () => {
-  const dispatch = useDispatch();
-  const food = useSelector((state) => state.food);
-    const { restaurants, filteredRestaurants} = food
+  const dispatch = useDispatch();   
   const handleSearchChange = (e) => {
     const query = e.target.value;
-    dispatch(search({ type: "SET_SEARCH_QUERY", payload: query }));
-    dispatch(
-      search({ type: "FILTER_RESTAURANTS", payload: restaurants })
-    );
+    dispatch(search(query));
   };
 
   return (

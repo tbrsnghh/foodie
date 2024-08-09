@@ -1,6 +1,8 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
+// hàm dưới tìm object.values theo searchQuery
 const matchesSearchQuery = (restaurant, query) => {
+  console.log(Object.values(restaurant));
   const lowerCaseQuery = query.toLowerCase();
   return Object.values(restaurant).some(
     (value) =>
@@ -8,9 +10,9 @@ const matchesSearchQuery = (restaurant, query) => {
   );
 };
 const initialState = {
+  restaurants: [],
   food: [],
   drinks: [],
-  restaurants: [],
   status: "idle", // Changed status to 'idle' for clarity
   error: null,
   searchQuery: "",
@@ -36,34 +38,33 @@ const foodSlice = createSlice({
   reducers: {
     search(state, action) {
       console.log(action.payload);
-      switch (action.payload.type) {
-        case "SET_RESTAURANTS":
-          return {
-            ...state,
-            restaurants: action.payload.payload,
-          };
-        case "SET_SEARCH_QUERY":
-          return {
-            ...state,
-            searchQuery: action.payload.payload,
-          };
-        case "FILTER_RESTAURANTS":
-          return {
-            ...state,
-            filteredRestaurants: state.restaurants.filter(
-              (restaurant) => matchesSearchQuery(restaurant, state.searchQuery)
-              // restaurant.name
-              // .toLowerCase()
-              // .includes(state.searchQuery.toLowerCase())
-              // ||
-              // restaurant.cuisine
-              // .toLowerCase()
-              // .includes(state.searchQuery.toLowerCase())
-            ),
-          };
-        default:
-          return state;
-      }
+      return {
+        ...state,
+        searchQuery: action.payload,
+        // Tìm bằng tên nhà hàng
+        // filteredRestaurants: state.restaurants.filter((restaurant) =>
+        //   matchesSearchQuery(restaurant, state.searchQuery)
+        // tìm bằng tên món
+        filteredRestaurants: state.restaurants.filter(
+          (restaurant) =>
+            // Kiểm tra trong foodmenu
+            restaurant.foodmenu.some((menu) =>
+              menu.items.some((item) =>
+                item.name
+                  .toLowerCase()
+                  .includes(state.searchQuery.toLowerCase())
+              )
+            ) ||
+            // Kiểm tra trong drinksmenu
+            restaurant.drinksmenu.some((drinkMenu) =>
+              drinkMenu.items.some((drinkItem) =>
+                drinkItem.name
+                  .toLowerCase()
+                  .includes(state.searchQuery.toLowerCase())
+              )
+            )
+        ),
+      };
     },
   },
   extraReducers: (builder) => {
@@ -74,6 +75,19 @@ const foodSlice = createSlice({
       .addCase(fetchRestaurants.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.restaurants = action.payload;
+        // load danh mục
+        const foodCategories = [];
+        const drinksCategories = [];
+        state.restaurants.forEach((restaurant) => {
+          restaurant.foodmenu.forEach((categoryGroup) => {
+            foodCategories.push(categoryGroup.categories);
+          });
+          restaurant.drinksmenu.forEach((categoryGroup) => {
+            drinksCategories.push(categoryGroup.categories);
+          });
+        });
+        state.food = [...new Set(foodCategories)];
+        state.drinks = [...new Set(drinksCategories)];
       })
       .addCase(fetchRestaurants.rejected, (state, action) => {
         state.status = "failed";

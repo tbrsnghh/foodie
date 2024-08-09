@@ -19,6 +19,7 @@ import Swiper from "../../components/swiper/Swiper";
 import Aos from "aos";
 import SearchBar from "../../components/searchBar/SearchBar";
 import SearchRes from "../../components/searchBar/SearchRes";
+import Categories from "../../components/categories/Categories";
 
 export default function Home(props) {
   const { restaurants } = props.foodie;
@@ -97,6 +98,7 @@ export default function Home(props) {
               There's <span style={{ color: "#ED2B2A" }}>something</span> for
               <span style={{ color: "#ED2B2A" }}> everyone ! </span>
             </h1>
+            <Categories/>
           </div>
         </div>
       </Layout>

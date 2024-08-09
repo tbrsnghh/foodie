@@ -12,14 +12,14 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchRestaurants());
   }, []);
-  const {restaurants} = useSelector((state) => state.food);
+  const {restaurants, food, drinks} = useSelector((state) => state.food);
   
   const { token } = useToken();
   const screens = useBreakpoint();
 
   const menuItems = [
     {
-      label: <Link to="/RES01">Restaurants</Link>,
+      label: <Link to="/res/RES01">Restaurants</Link>,
       key: "res",
       children:
       restaurants && restaurants.length > 0
@@ -33,28 +33,32 @@ export default function App() {
             }))
           : [],
     },
-    // {
-    //   label: "Food",
-    //   key: "food",
-    //   children:
-    //     food && food.length > 0
-    //       ? food.map((item, index) => ({
-    //           label: item.categories,
-    //           key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
-    //         }))
-    //       : [],
-    // },
-    // {
-    //   label: "Drinks",
-    //   key: "drinks",
-    //   children:
-    //     drinks && drinks.length > 0
-    //       ? drinks.map((item, index) => ({
-    //           label: item.categories,
-    //           key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
-    //         }))
-    //       : [],
-    // },
+    {
+      label: <Link to="/">Food</Link>,
+      key: "food",
+      children:
+        food && food.length > 0
+          ? food.map((item, index) => ({
+            label: (
+              <Link to={`/food/${item}`} index={index}>
+                {item}
+              </Link>
+            ),
+              key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+            }))
+          : [],
+    },
+    {
+      label: "Drinks",
+      key: "drinks",
+      children:
+        drinks && drinks.length > 0
+          ? drinks.map((item, index) => ({
+              label: item,
+              key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+            }))
+          : [],
+    },
   ];
 
   const [current, setCurrent] = useState("projects");

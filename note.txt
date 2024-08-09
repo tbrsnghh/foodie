@@ -1,10 +1,10 @@
 Pages:
     - Home: landing
         [
-            header
+            header oki
             main 
                 Home
-                    promotions
+                    promotions oki
                     danh mục 
                     about
                 cart thanh toán 

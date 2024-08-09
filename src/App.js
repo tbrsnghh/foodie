@@ -5,6 +5,8 @@ import Home from "./pages/home/Home";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchRestaurants } from "./store/features/food/foodSlice";
 import Aos from "aos";
+import CategoryRestaurants from "./pages/categoryRestaurants/CategoryRestaurants";
+
 
 export default function App() {
   const f = useSelector((state) => state.food);
@@ -19,6 +21,7 @@ export default function App() {
     <Routes>
       <Route index element={<Home foodie={f}/>}></Route>
       <Route path="/res/:index" element={<Restaurants foodie={f} />} />
+      <Route path="/food/:index" element={<CategoryRestaurants foodie={f} />} />
     </Routes>
   </HashRouter>
   )
