@@ -98,7 +98,7 @@ export default function Home(props) {
               There's <span style={{ color: "#ED2B2A" }}>something</span> for
               <span style={{ color: "#ED2B2A" }}> everyone ! </span>
             </h1>
-            <Categories/>
+            {/* <Categories/> */}
           </div>
         </div>
       </Layout>
