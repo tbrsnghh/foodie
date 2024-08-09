@@ -41,7 +41,7 @@ export default function App() {
           ? food.map((item, index) => ({
             label: (
               <Link to={`/food/${item}`} index={index}>
-                {item}
+                {item.name}
               </Link>
             ),
               key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
@@ -54,7 +54,7 @@ export default function App() {
       children:
         drinks && drinks.length > 0
           ? drinks.map((item, index) => ({
-              label: item,
+              label: item.name,
               key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
             }))
           : [],
