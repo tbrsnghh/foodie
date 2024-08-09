@@ -35,35 +35,38 @@ const foodSlice = createSlice({
   initialState,
   reducers: {
     search(state, action) {
-      console.log(action.payload);
-      switch (action.payload.type) {
-        case "SET_RESTAURANTS":
-          return {
-            ...state,
-            restaurants: action.payload.payload,
-          };
-        case "SET_SEARCH_QUERY":
-          return {
-            ...state,
-            searchQuery: action.payload.payload,
-          };
-        case "FILTER_RESTAURANTS":
-          return {
-            ...state,
-            filteredRestaurants: state.restaurants.filter(
-              (restaurant) => matchesSearchQuery(restaurant, state.searchQuery)
-              // restaurant.name
-              // .toLowerCase()
-              // .includes(state.searchQuery.toLowerCase())
-              // ||
-              // restaurant.cuisine
-              // .toLowerCase()
-              // .includes(state.searchQuery.toLowerCase())
-            ),
-          };
-        default:
-          return state;
-      }
+      // Tìm bằng tên nhà hàng
+      // filteredRestaurants: state.restaurants.filter((restaurant) =>
+      //   matchesSearchQuery(restaurant, state.searchQuery)
+      // tìm theo tên món food hay drinks
+      // filteredRestaurants: state.restaurants.filter(
+      //   (restaurant) =>
+      //     // Kiểm tra trong foodmenu
+      //     restaurant.foodmenu.some((menu) =>
+      //       menu.items.some((item) =>
+      //         item.name
+      //           .toLowerCase()
+      //           .includes(state.searchQuery.toLowerCase())
+      //       )
+      //     ) ||
+      //     // Kiểm tra trong drinksmenu
+      //     restaurant.drinksmenu.some((drinkMenu) =>
+      //       drinkMenu.items.some((drinkItem) =>
+      //         drinkItem.name
+      //           .toLowerCase()
+      //           .includes(state.searchQuery.toLowerCase())
+      //       )
+      //     )
+      // ),
+      // Tìm theo food categories
+      state.searchQuery = action.payload;
+      state.filteredRestaurants = state.restaurants.filter((restaurant) => {
+        return restaurant.foodmenu.some((menu) =>
+          menu.categories
+            .toLowerCase()
+            .includes(state.searchQuery.toLowerCase())
+        );
+      });
     },
   },
   extraReducers: (builder) => {
