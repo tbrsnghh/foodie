@@ -20,6 +20,8 @@ import Aos from "aos";
 import SearchBar from "../../components/searchBar/SearchBar";
 import SearchRes from "../../components/searchBar/SearchRes";
 import Categories from "../../components/categories/Categories";
+import Footer from "../../components/footer/Footer";
+import Footerr from "../../components/footer/Footer";
 
 export default function Home(props) {
   const { restaurants } = props.foodie;
@@ -103,6 +105,7 @@ export default function Home(props) {
         </div>
         
       </Layout>
+      <Footerr/>
     </>
   );
 }

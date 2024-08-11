@@ -1,6 +1,6 @@
 import React, { useState, Image, useEffect } from "react";
 import { Button, Grid, Menu, Space, theme } from "antd";
-import { MenuOutlined, ShoppingCartOutlined } from "@ant-design/icons";
+import { MenuOutlined, ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import {fetchRestaurants} from '../../store/features/food/foodSlice'
@@ -142,6 +142,7 @@ export default function App() {
           <Space>
             {screens.md ? <Button type="text">Log in</Button> : ""}
             {/* <Button type="primary">Sign in</Button> */}
+            <SearchOutlined style={styles.cart} />
             <ShoppingCartOutlined style={styles.cart} />
           </Space>
         </div>
