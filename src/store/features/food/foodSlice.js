@@ -17,6 +17,7 @@ const initialState = {
   error: null,
   searchQuery: "",
   filteredRestaurants: [],
+  uniqueCategories: []
 };
 
 // Get restaurants from API
@@ -64,7 +65,7 @@ const foodSlice = createSlice({
       state.searchQuery = action.payload;
       state.filteredRestaurants = state.restaurants.filter((restaurant) => {
         return restaurant.foodmenu.some((menu) =>
-          menu.categories
+          menu.categories.name
             .toLowerCase()
             .includes(state.searchQuery.toLowerCase())
         );
@@ -79,19 +80,26 @@ const foodSlice = createSlice({
       .addCase(fetchRestaurants.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.restaurants = action.payload;
-        // load danh mục
-        const foodCategories = [];
-        const drinksCategories = [];
-        state.restaurants.forEach((restaurant) => {
-          restaurant.foodmenu.forEach((categoryGroup) => {
-            foodCategories.push(categoryGroup.categories);
-          });
-          restaurant.drinksmenu.forEach((categoryGroup) => {
-            drinksCategories.push(categoryGroup.categories);
-          });
-        });
-        state.food = [...new Set(foodCategories)];
-        state.drinks = [...new Set(drinksCategories)];
+        const foodCategoriesMap = {};  
+        const drinksCategoriesMap = {};  
+        
+        state.restaurants.forEach((restaurant) => {  
+          restaurant.foodmenu.forEach((category) => {  
+              if (!foodCategoriesMap[category.categories.name]) {  
+                foodCategoriesMap[category.categories.name] = category.categories; // hoặc lấy category.name nếu chỉ cần tên  
+              }  
+             
+          });  
+        
+          restaurant.drinksmenu.forEach((category) => {  
+            if (!drinksCategoriesMap[category.categories.name]) {  
+              drinksCategoriesMap[category.categories.name] = category.categories; // hoặc lấy category.name nếu chỉ cần tên  
+            }   
+          });  
+        });  
+         
+        state.food = Object.values(foodCategoriesMap);  
+        state.drinks = Object.values(drinksCategoriesMap);
       })
       .addCase(fetchRestaurants.rejected, (state, action) => {
         state.status = "failed";

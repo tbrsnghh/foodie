@@ -40,11 +40,11 @@ export default function App() {
         food && food.length > 0
           ? food.map((item, index) => ({
             label: (
-              <Link to={`/food/${item}`} index={index}>
+              <Link to={`/food/${item.name}`} index={index}>
                 {item.name}
               </Link>
             ),
-              key: `food:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+              key: `food:${index.name}`, // Sử dụng template literals để làm cho key rõ ràng hơn
             }))
           : [],
     },

@@ -16,7 +16,7 @@ export default function CategoryRestaurants() {
   }, [item]);
   const { filteredRestaurants } = useSelector((state) => state.food);
   //const restaurant = f.restaurants.find((restaurant) => restaurant.fod === item);
-  console.log(filteredRestaurants);
+  
   return (
     <>
       <Header />
@@ -32,12 +32,19 @@ export default function CategoryRestaurants() {
                   <span style={{ color: "#06D001" }}>{item}</span> ở{" "}
                   <span style={{ color: "#ED2B2A" }}>{restaurant.name}</span>
                 </h1>
-                {restaurant.foodmenu.find((menu) => menu.categories == item) ? (
-                  (console.log(restaurant),
-                  (<Swiper food={restaurant.foodmenu.find((menu) => menu.categories == item).items} />))
-                ) : (
-                  <p>No food.</p>
-                )}
+                {restaurant.foodmenu.find(  
+                        (menu) => menu.categories.name === item  
+                    ) ? (  
+                        <Swiper  
+                            food={  
+                                restaurant.foodmenu.find(  
+                                    (menu) => menu.categories === item  
+                                ).items  
+                            }  
+                        />  
+                    ) : (  
+                        <p>No food.</p>  
+                    )}  
               </div>
             </div>
           ))

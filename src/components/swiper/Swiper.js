@@ -39,6 +39,7 @@ const FoodSlider = ({ food }) => {
       },
     ],
   };
+  //console.log(food)
   return (
     <Slider {...settings}>
       {food.length > 0 &&
