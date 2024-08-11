@@ -2,10 +2,15 @@ import { Card, Col, Row } from "antd";
 import Meta from "antd/es/card/Meta";  
 import React from "react";  
 import { useSelector } from "react-redux";  
+import { useNavigate } from "react-router-dom";
 
 export default function Categories() {  
   const { restaurants, uniqueCategories} = useSelector((state) => state.food);  
   //console.log(uniqueCategories)
+  const Navigate = useNavigate();
+  const handleOnClick = (what)=>{
+    Navigate(`/results/${encodeURIComponent(what)}`);  
+  }
   return (  
     <Row gutter={16}>  
       {uniqueCategories.length > 0 &&  
@@ -24,7 +29,8 @@ export default function Categories() {
                   src={item.img}  
                   style={{ height: 200, width: "100%", objectFit: "cover" }}  
                 />  
-              }  
+              } 
+              onClick={() => handleOnClick(item.name)} 
             >  
               <Meta title={item.name} description=""/>  
             </Card>  

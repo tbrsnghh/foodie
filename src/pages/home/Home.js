@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Layout,
   Carousel,
@@ -22,6 +22,10 @@ import SearchRes from "../../components/searchBar/SearchRes";
 import Categories from "../../components/categories/Categories";
 import Footer from "../../components/footer/Footer";
 import Footerr from "../../components/footer/Footer";
+import CartSlice from "../../store/features/cart/cartSlice";
+import CartSlider from "../../components/cartSlider/CartSlider";
+import ShoppingCartButton from "../../components/cartSlider/CartModal";
+import { useNavigate } from "react-router-dom";
 
 export default function Home(props) {
   const { restaurants } = props.foodie;
@@ -31,8 +35,9 @@ export default function Home(props) {
     require("../../images/bg_3.jpg"),
   ];
   return (
-    <>
+    <div className="app-container">  
       <Header />
+      
       <Layout.Content
         style={{ position: "relative", overflow: "hidden" }}
         data-aos="fade-up"
@@ -77,18 +82,13 @@ export default function Home(props) {
 
       <Layout>
         <div className="sectionContainer">
-          <div>
-            <h1>Nhà hàng</h1>
-            <SearchBar />
-            <SearchRes />
-          </div>
 
           <div className="sectionContent">
             <h1>
               Ưu đãi tại <span style={{ color: "#ED2B2A" }}>Hồ Chí Minh</span>
             </h1>
             {restaurants.length > 0 ? (
-              <Swiper food={restaurants[0].foodmenu[0].items} />
+              <Swiper restaurant={restaurants[0]} type="food" items={restaurants[0].foodmenu[0].items} />
             ) : (
               <p>No food.</p>
             )}
@@ -106,6 +106,6 @@ export default function Home(props) {
         
       </Layout>
       <Footerr/>
-    </>
+    </div>
   );
 }

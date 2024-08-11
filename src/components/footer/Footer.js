@@ -7,7 +7,12 @@ const { Footer } = Layout;
 export default function Footerr() {
   return (
     <Footer
-      style={{ backgroundColor: "#001529", color: "white", padding: "40px 0" }}
+      style={{
+        backgroundColor: "white",
+        color: "#001529",
+        padding: "40px 0",
+        marginTop: "20px",
+      }}
     >
       <div className="sectionContainer">
         <div className="sectionContent">
@@ -16,29 +21,19 @@ export default function Footerr() {
               <h3>Company</h3>
               <ul>
                 <li>
-                  <a href="#about" style={{ color: "white" }}>
-                    About Us
-                  </a>
+                  <a href="#about">About Us</a>
                 </li>
                 <li>
-                  <a href="#contact" style={{ color: "white" }}>
-                    Contact Us
-                  </a>
+                  <a href="#contact">Contact Us</a>
                 </li>
                 <li>
-                  <a href="#reservation" style={{ color: "white" }}>
-                    Reservation
-                  </a>
+                  <a href="#reservation">Reservation</a>
                 </li>
                 <li>
-                  <a href="#privacy" style={{ color: "white" }}>
-                    Privacy Policy
-                  </a>
+                  <a href="#privacy">Privacy Policy</a>
                 </li>
                 <li>
-                  <a href="#terms" style={{ color: "white" }}>
-                    Terms & Condition
-                  </a>
+                  <a href="#terms">Terms & Condition</a>
                 </li>
               </ul>
             </Col>

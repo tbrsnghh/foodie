@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import food from "./food/foodSlice";
+import cart from "./cart/cartSlice";
 
 const saveToLocalStorage = (state) => {  
   try {  
@@ -24,6 +25,7 @@ const persistedState = loadFromLocalStorage();
 const store = configureStore({
   reducer: {
     food: food,
+    cart: cart
   },
   preloadedState: persistedState,
 });

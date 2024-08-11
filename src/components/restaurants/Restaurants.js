@@ -12,7 +12,6 @@ export default function Restaurants(props) {
   const { restaurants } = props.foodie;
 
   const restaurant = restaurants.find((res) => res.id === index);
-
   return (
     <>
       <Header />
@@ -41,11 +40,36 @@ export default function Restaurants(props) {
 
         <div className="sectionContainer">
           <div className="sectionContent">
-            {restaurant ? (
-              <Swiper food={restaurant.foodmenu[0].items} /> // Pass food items to Swiper
-            ) : (
-              <p>Restaurant items not found.</p>
-            )}
+            {restaurant ? (  
+              <>
+              {
+                restaurant.foodmenu.map((menu, idx) => {  
+                  return ( // Thêm `return` ở đây để trả về JSX  
+                    <Swiper  
+                      restaurant={restaurant}  
+                      type="food"  
+                      items={menu.items}  
+                      key={idx} // Thêm `key` để React nhận diện  
+                    />  
+                  );  
+                })  
+              }
+              {
+                restaurant.drinksmenu.map((menu, idx) => {  
+                  return ( // Thêm `return` ở đây để trả về JSX  
+                    <Swiper  
+                      restaurant={restaurant}  
+                      type="drinks"  
+                      items={menu.items}  
+                      key={idx} // Thêm `key` để React nhận diện  
+                    />  
+                  );  
+                })  
+              }
+              </>
+            ) : (  
+              <p>Restaurant items not found.</p>  
+            )}  
           </div>
         </div>
       </Layout>

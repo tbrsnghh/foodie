@@ -1,9 +1,17 @@
-import React, { useState, Image, useEffect } from "react";
+import React, { useState, Image, useEffect, useRef } from "react";
 import { Button, Grid, Menu, Space, theme } from "antd";
-import { MenuOutlined, ShoppingCartOutlined, SearchOutlined } from "@ant-design/icons";
+import {
+  MenuOutlined,
+  ShoppingCartOutlined,
+  SearchOutlined,
+} from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
-import {fetchRestaurants} from '../../store/features/food/foodSlice'
+import { Link, useNavigate } from "react-router-dom";
+import { fetchRestaurants } from "../../store/features/food/foodSlice";
+import SearchBar from "../searchBar/SearchBar";
+import Search from "antd/es/input/Search";
+import SearchRes from "../searchBar/SearchRes";
+import CartSlider from "../cartSlider/CartSlider";
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
 
@@ -12,17 +20,30 @@ export default function App() {
   useEffect(() => {
     dispatch(fetchRestaurants());
   }, []);
-  const {restaurants, food, drinks} = useSelector((state) => state.food);
-  
+  const { restaurants, food, drinks } = useSelector((state) => state.food);
+
   const { token } = useToken();
   const screens = useBreakpoint();
-
+  const [current, setCurrent] = useState("projects");
+  const onClick = (e) => {
+    console.log("click ", e);
+    setCurrent(e.key);
+  };
+  // cart
+  const [isCartVisible, setCartVisible] = useState(false);
+  const handleCartToggle = () => {
+    setCartVisible(!isCartVisible);
+  };
+  const Navigate = useNavigate();
+  const handleChheckout = ()=>{
+    Navigate(`/cart`);  
+  }
   const menuItems = [
     {
       label: <Link to="/res/RES01">Restaurants</Link>,
       key: "res",
       children:
-      restaurants && restaurants.length > 0
+        restaurants && restaurants.length > 0
           ? restaurants.map((item, index) => ({
               label: (
                 <Link to={`/res/${item.id}`} index={index}>
@@ -34,38 +55,36 @@ export default function App() {
           : [],
     },
     {
-      label: <Link to="/">Food</Link>,
+      label: <Link to="/results/chicken">Food</Link>,
       key: "food",
       children:
         food && food.length > 0
           ? food.map((item, index) => ({
-            label: (
-              <Link to={`/food/${item.name}`} index={index}>
-                {item.name}
-              </Link>
-            ),
-              key: `food:${index.name}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+              label: (
+                <Link to={`/results/${item.name}`} index={index}>
+                  {item.name}
+                </Link>
+              ),
+              key: `results:${index.name}`, // Sử dụng template literals để làm cho key rõ ràng hơn
             }))
           : [],
     },
     {
-      label: "Drinks",
+      label: <Link to="/results/Soft%20drinks">Drinks</Link>,
       key: "drinks",
       children:
         drinks && drinks.length > 0
           ? drinks.map((item, index) => ({
-              label: item.name,
-              key: `drinks:${index}`, // Sử dụng template literals để làm cho key rõ ràng hơn
+              label: (
+                <Link to={`/results/${item.name}`} index={index}>
+                  {item.name}
+                </Link>
+              ),
+              key: `results:${item.name}`, // Sử dụng template literals để làm cho key rõ ràng hơn
             }))
           : [],
     },
   ];
-
-  const [current, setCurrent] = useState("projects");
-  const onClick = (e) => {
-    console.log("click ", e);
-    setCurrent(e.key);
-  };
 
   const styles = {
     container: {
@@ -93,7 +112,8 @@ export default function App() {
       transform: screens.md ? " " : "translate(-50%, -50%)",
     },
     cart: {
-      fontSize: screens.md? "28px" : "24px", color: "#08c",
+      fontSize: screens.md ? "28px" : "24px",
+      color: "#08c",
       right: "0%",
       position: screens.md ? "static" : "absolute",
       top: "50%",
@@ -124,6 +144,7 @@ export default function App() {
                 style={styles.logo}
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTe2TJJqxfGIUBS5On3nRz7mILU8zvMBKJu5g&s"
                 alt="Logo"
+                onClick={()=>Navigate(`/#`)}
               />
             </Space>
           </div>
@@ -142,8 +163,18 @@ export default function App() {
           <Space>
             {screens.md ? <Button type="text">Log in</Button> : ""}
             {/* <Button type="primary">Sign in</Button> */}
-            <SearchOutlined style={styles.cart} />
-            <ShoppingCartOutlined style={styles.cart} />
+            <SearchBar />
+            <ShoppingCartOutlined
+              
+              style={styles.cart}
+              onClick={handleCartToggle}
+              onDoubleClick={handleChheckout}
+            />
+            {isCartVisible && (
+              <div>
+                <CartSlider setIsVisible={setCartVisible}/> {/* Đảm bảo CartSlider nằm trong div này */}
+              </div>
+            )}
           </Space>
         </div>
       </nav>

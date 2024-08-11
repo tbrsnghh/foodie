@@ -6,6 +6,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchRestaurants } from "./store/features/food/foodSlice";
 import Aos from "aos";
 import CategoryRestaurants from "./pages/categoriesRestaurants/CategoriesRestaurants";
+import Cart from "./pages/cart/Cart";
+import Checkout from "./pages/checkout/Checkout";
 
 export default function App() {
   const f = useSelector((state) => state.food);
@@ -19,8 +21,10 @@ export default function App() {
     <HashRouter>
     <Routes>
       <Route index element={<Home foodie={f}/>}></Route>
-      <Route path="/res/:index" element={<Restaurants foodie={f} />} />
-      <Route path="/food/:index" element={<CategoryRestaurants foodie={f} />} />
+      <Route path="/res/:index" element={<Restaurants foodie={f} />} /> 
+      <Route path="/results/:index" element={<CategoryRestaurants foodie={f} />} />
+      <Route path="/cart" element={<Cart />} /> 
+      <Route path="/checkout" element={<Checkout />} /> 
     </Routes>
   </HashRouter>
   )

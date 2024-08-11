@@ -17,7 +17,7 @@ const initialState = {
   error: null,
   searchQuery: "",
   filteredRestaurants: [],
-  uniqueCategories: []
+  uniqueCategories: [],
 };
 
 // Get restaurants from API
@@ -38,36 +38,44 @@ const foodSlice = createSlice({
   initialState,
   reducers: {
     search(state, action) {
-      // Tìm bằng tên nhà hàng
-      // filteredRestaurants: state.restaurants.filter((restaurant) =>
-      //   matchesSearchQuery(restaurant, state.searchQuery)
-      // tìm theo tên món food hay drinks
-      // filteredRestaurants: state.restaurants.filter(
-      //   (restaurant) =>
-      //     // Kiểm tra trong foodmenu
-      //     restaurant.foodmenu.some((menu) =>
-      //       menu.items.some((item) =>
-      //         item.name
-      //           .toLowerCase()
-      //           .includes(state.searchQuery.toLowerCase())
-      //       )
-      //     ) ||
-      //     // Kiểm tra trong drinksmenu
-      //     restaurant.drinksmenu.some((drinkMenu) =>
-      //       drinkMenu.items.some((drinkItem) =>
-      //         drinkItem.name
-      //           .toLowerCase()
-      //           .includes(state.searchQuery.toLowerCase())
-      //       )
-      //     )
-      // ),
-      // Tìm theo food categories
       state.searchQuery = action.payload;
       state.filteredRestaurants = state.restaurants.filter((restaurant) => {
-        return restaurant.foodmenu.some((menu) =>
-          menu.categories.name
+        // food category
+        return (
+          // restaurant name
+          restaurant.name
             .toLowerCase()
-            .includes(state.searchQuery.toLowerCase())
+            .includes(state.searchQuery.toLowerCase()) ||
+          // cuisine
+          restaurant.cuisine
+            .toLowerCase()
+            .includes(state.searchQuery.toLowerCase()) ||
+          // food categories
+          restaurant.foodmenu.some((menu) => {
+            return (
+              menu.categories.name // tên loại
+                .toLowerCase()
+                .includes(state.searchQuery.toLowerCase()) ||
+              menu.items.some((item) =>
+                item.name // tên món ăn
+                  .toLowerCase()
+                  .includes(state.searchQuery.toLowerCase())
+              )
+            );
+          }) ||
+          // drink categories
+          restaurant.drinksmenu.some((menu) =>{
+            return (
+              menu.categories.name
+                .toLowerCase()
+                .includes(state.searchQuery.toLowerCase()) ||
+              menu.items.some((item) =>
+                item.name
+                  .toLowerCase()
+                  .includes(state.searchQuery.toLowerCase())
+              )
+            );
+          })
         );
       });
     },
@@ -80,25 +88,25 @@ const foodSlice = createSlice({
       .addCase(fetchRestaurants.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.restaurants = action.payload;
-        const foodCategoriesMap = {};  
-        const drinksCategoriesMap = {};  
-        
-        state.restaurants.forEach((restaurant) => {  
-          restaurant.foodmenu.forEach((category) => {  
-              if (!foodCategoriesMap[category.categories.name]) {  
-                foodCategoriesMap[category.categories.name] = category.categories; // hoặc lấy category.name nếu chỉ cần tên  
-              }  
-             
-          });  
-        
-          restaurant.drinksmenu.forEach((category) => {  
-            if (!drinksCategoriesMap[category.categories.name]) {  
-              drinksCategoriesMap[category.categories.name] = category.categories; // hoặc lấy category.name nếu chỉ cần tên  
-            }   
-          });  
-        });  
-         
-        state.food = Object.values(foodCategoriesMap);  
+        const foodCategoriesMap = {};
+        const drinksCategoriesMap = {};
+
+        state.restaurants.forEach((restaurant) => {
+          restaurant.foodmenu.forEach((category) => {
+            if (!foodCategoriesMap[category.categories.name]) {
+              foodCategoriesMap[category.categories.name] = category.categories; // hoặc lấy category.name nếu chỉ cần tên
+            }
+          });
+
+          restaurant.drinksmenu.forEach((category) => {
+            if (!drinksCategoriesMap[category.categories.name]) {
+              drinksCategoriesMap[category.categories.name] =
+                category.categories; // hoặc lấy category.name nếu chỉ cần tên
+            }
+          });
+        });
+
+        state.food = Object.values(foodCategoriesMap);
         state.drinks = Object.values(drinksCategoriesMap);
       })
       .addCase(fetchRestaurants.rejected, (state, action) => {

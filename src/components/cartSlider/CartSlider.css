@@ -1,0 +1,64 @@
+.cart-slider {  
+    position: absolute ; 
+    left: 0; 
+    background-color: #f8f9fa; 
+    border-radius: 8px;  
+    padding: 20px;  
+    height: 100vh;  
+    width: 30vw; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15); 
+    z-index: 1000;  
+    transition: opacity 0.4s ease, transform 0.3s ease; 
+    transform: translateY(0);  
+    opacity: 1; 
+}  
+
+.fade-out {  
+    opacity: 0;  
+    transform: translateY(-10px); 
+    pointer-events: none;   
+}  
+
+.fade-in {  
+    opacity: 1; /* Hiện */  
+    pointer-events: auto;  
+}  
+
+.cart-slider:hover {  
+    transform: translateY(-5px);   
+}  
+
+.cart-slider h2 {  
+    text-align: center;  
+    color: #333;  
+}  
+
+.cart-item {  
+    background-color: #ffffff;   
+    border: 1px solid #e0e0e0; 
+    border-radius: 5px;  
+    margin: 10px 0;  
+    padding: 15px;  
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);  
+    transition: background-color 0.3s ease;  
+}  
+
+.cart-item:hover {  
+    background-color: #f1f1f1;   
+}  
+
+.item-name {  
+    font-size: 1.2em;  
+    color: #007bff; 
+    margin: 0;  
+}  
+
+.item-restaurant {  
+    margin: 5px 0;  
+    color: #555; /* Màu xám cho tên nhà hàng */  
+}  
+
+.item-quantity {  
+    font-weight: bold;  
+    color: #333; /* Màu đen cho số lượng */  
+}

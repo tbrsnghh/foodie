@@ -35,7 +35,7 @@ export default function CategoryRestaurants() {
                 {restaurant.foodmenu.find(  
                         (menu) => menu.categories.name === item  
                     ) ? (  
-                        <Swiper  
+                        <Swiper  restaurant={restaurant} type="food"
                             food={  
                                 restaurant.foodmenu.find(  
                                     (menu) => menu.categories === item  
