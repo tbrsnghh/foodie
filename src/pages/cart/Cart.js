@@ -7,6 +7,7 @@ import Header from "../../components/header/Header";
 import Footerr from '../../components/footer/Footer';
 import { List, Button, Typography, Divider, Card, Space } from 'antd';  
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 export default function Cart() {  
     const {  items, totalPrice} = useSelector((state) => state.cart);  
     const dispatch = useDispatch();   
@@ -16,7 +17,12 @@ export default function Cart() {
         if (totalPrice !== 0) {  
             navigate(`/checkout`);  
         } else {  
-            alert("Giỏ hàng của bạn trống");  
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Giỏ hàng của bạn trống! Mua gì đi 😑",
+              });
+            
         }  
     };  
     return (  
@@ -46,7 +52,28 @@ export default function Cart() {
                         .toLocaleString()} VND  
                 </h2>  
                 <Space>
-                <Button className="clear-button" onClick={()=>dispatch(clearCart())}>Xóa toàn bộ</Button>
+                <Button className="clear-button" onClick={()=>{
+                    Swal.fire({
+                        title: "Bạn chắc chứ? 😢",
+                        text: "Bạn không thể khôi phục đâu 😿!",
+                        icon: "warning",
+                        showCancelButton: true,
+                        confirmButtonColor: "#3085d6",
+                        cancelButtonColor: "#d33",
+                        cancelButtonText: "Hong, tui giỡn thui",
+                        confirmButtonText: "Vâng, xóa đi ạ!"
+                      }).then((result) => {
+                        if (result.isConfirmed) {
+                            dispatch(clearCart())
+                          Swal.fire({
+                            title: "Xóa ròi!",
+                            text: "😭 Giỏ hàng của bạn trống!",
+                            icon: "success"
+                          });
+                        }
+                      });
+                    
+                }}>Xóa toàn bộ</Button>
                 <Button className="checkout-button" onClick={handleCheckout}>Tiến hành thanh toán</Button>  
                 </Space>
                 

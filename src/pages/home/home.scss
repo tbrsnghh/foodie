@@ -1,0 +1,37 @@
+@import '../../variables';  
+
+.layoutcontent {  
+    position: relative;  
+    overflow: hidden;  
+    width: 100%;
+    #imgBanner {  
+        width: 100%;  
+        height: auto;  
+        max-height: 50em;  
+        object-fit: cover;    
+    }
+}  
+.box-position {  
+    display: flex;  
+    position: absolute;  
+    top: 50%;  
+    left: 50%;  
+    transform: translate(-50%, -50%);  
+    justify-content: center;  
+    align-items: center;  
+    height: 30em;  
+    z-index: 3;  
+
+    .ant-card {  
+        width: 80%;  
+        text-align: center;  
+        transition: width 0.3s;
+    }  
+}  
+
+.sectionContent {  
+    h1 {  
+        margin-top: 40px; 
+    }  
+}  
+

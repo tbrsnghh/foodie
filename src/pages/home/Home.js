@@ -12,21 +12,12 @@ import {
 } from "antd";
 import Header from "../../components/header/Header";
 import Title from "antd/es/skeleton/Title";
-import Meta from "antd/es/card/Meta";
-import { useDispatch, useSelector } from "react-redux";
-import { fetchRestaurants } from "../../store/features/food/foodSlice";
 import Swiper from "../../components/swiper/Swiper";
 import Aos from "aos";
-import SearchBar from "../../components/searchBar/SearchBar";
-import SearchRes from "../../components/searchBar/SearchRes";
 import Categories from "../../components/categories/Categories";
-import Footer from "../../components/footer/Footer";
 import Footerr from "../../components/footer/Footer";
-import CartSlice from "../../store/features/cart/cartSlice";
-import CartSlider from "../../components/cartSlider/CartSlider";
-import ShoppingCartButton from "../../components/cartSlider/CartModal";
 import { useNavigate } from "react-router-dom";
-
+import "./home.scss";
 export default function Home(props) {
   const { restaurants } = props.foodie;
   const images = [
@@ -35,27 +26,16 @@ export default function Home(props) {
     require("../../images/bg_3.jpg"),
   ];
   return (
-    <div className="app-container">  
+    <div className="app-container">
       <Header />
-      
+
       <Layout.Content
-        style={{ position: "relative", overflow: "hidden" }}
+        className="layoutcontent"
         data-aos="fade-up"
         data-aos-duration="500"
       >
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "32%",
-            transform: "translate(-50%, -25%)",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "30em",
-            zIndex: "3",
-          }}
-        >
-          <Card style={{ width: 398, textAlign: "center" }}>
+        <div className="box-position">
+          <Card className="ant-card" style={{ textAlign: "center" }}>
             <Title level={4}>Good Afternoon</Title>
             <h1>Where should we deliver your food today?</h1>
             <Input
@@ -70,11 +50,7 @@ export default function Home(props) {
         <Carousel autoplay="true" draggable="true">
           {images.map((image, index) => (
             <div key={index}>
-              <img
-                src={image}
-                alt={`Slide ${index + 1}`}
-                style={{ width: "100%", height: "50em", objectFit: "cover" }}
-              />
+              <img id="imgBanner" src={image} alt={`Slide ${index + 1}`} />
             </div>
           ))}
         </Carousel>
@@ -82,13 +58,16 @@ export default function Home(props) {
 
       <Layout>
         <div className="sectionContainer">
-
           <div className="sectionContent">
             <h1>
               Ưu đãi tại <span style={{ color: "#007bff" }}>Hồ Chí Minh</span>
             </h1>
             {restaurants.length > 0 ? (
-              <Swiper restaurant={restaurants[0]} type="food" items={restaurants[0].foodmenu[0].items} />
+              <Swiper
+                restaurant={restaurants[0]}
+                type="food"
+                items={restaurants[0].foodmenu[0].items}
+              />
             ) : (
               <p>No food.</p>
             )}
@@ -100,12 +79,11 @@ export default function Home(props) {
               Có <span style={{ color: "#007bff" }}>vài thứ</span> bạn
               <span style={{ color: "#007bff" }}> muốn ! :)) </span>
             </h1>
-            <Categories/>
+            <Categories />
           </div>
         </div>
-        
       </Layout>
-      <Footerr/>
+      <Footerr />
     </div>
   );
 }

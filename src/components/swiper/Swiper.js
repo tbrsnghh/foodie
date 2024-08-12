@@ -7,6 +7,7 @@ import Meta from "antd/es/card/Meta";
 import '../swiper/swiper.css'
 import { addToCart } from "../../store/features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
+import Swal from 'sweetalert2'
 const FoodSlider = (props) => {
   const dispatch = useDispatch()
 
@@ -27,6 +28,13 @@ const FoodSlider = (props) => {
     addToCartItem.itemName = name
     addToCartItem.price = price
     dispatch(addToCart(addToCartItem))
+    Swal.fire({
+      position: "top-center",
+      icon: "success",
+      title: "Đã thêm sản phẩm",
+      showConfirmButton: false,
+      timer: 1500
+    });
   }
   const settings = {
     dots: true,
@@ -91,16 +99,26 @@ const FoodSlider = (props) => {
               >
                 {item.price} VND
               </p>
-              <i
-              class="fa-solid fa-plus"
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-                color:"#06D001"
-              }}
-              onClick={()=>handleAddItem(item.id, item.name, item.price)}
-            ></i>
+              <i  
+                className="fa-solid fa-plus"  
+                style={{  
+                  display: "flex",  
+                  justifyContent: "center",  
+                  alignItems: "center",  
+                  color: "white",  
+                  cursor: "pointer",  
+                  width: "30px",  
+                  height: "30px",  
+                  borderRadius: "50%",  
+                  backgroundColor: "#06D001",  
+                  boxShadow: "0 0 5px rgba(0, 0, 0, 0.2)",  
+                  clipPath: "circle(50%)",  
+                  marginTop: "10px", 
+                  float: "right" 
+                }}  
+                onClick={() => handleAddItem(item.id, item.name, item.price)}  
+              ></i>  
+              
             </Card>
             
           </div>

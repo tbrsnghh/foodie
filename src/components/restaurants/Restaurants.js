@@ -41,36 +41,46 @@ export default function Restaurants(props) {
 
         <div className="sectionContainer">
           <div className="sectionContent">
-            {restaurant ? (  
+            {restaurant ? (
               <>
-              {
-                restaurant.foodmenu.map((menu, idx) => {  
-                  return ( // Thêm `return` ở đây để trả về JSX  
-                    <Items  
-                      restaurant={restaurant}  
-                      type="food"  
-                      items={menu.items}  
-                      key={idx} // Thêm `key` để React nhận diện  
-                    />  
-                  );  
-                })  
-              }
-              {
-                restaurant.drinksmenu.map((menu, idx) => {  
-                  return ( // Thêm `return` ở đây để trả về JSX  
-                    <Swiper  
-                      restaurant={restaurant}  
-                      type="drinks"  
-                      items={menu.items}  
-                      key={idx} // Thêm `key` để React nhận diện  
-                    />  
-                  );  
-                })  
-              }
+                {restaurant.foodmenu.map((menu, idx) => {
+                  return (
+                    <>
+                      {menu.items.length > 0 ? (
+                        <h1>{menu.categories.name}</h1>
+                      ) : (
+                        ""
+                      )}
+                      <Items
+                        restaurant={restaurant}
+                        type="food"
+                        items={menu.items}
+                        key={idx}
+                      />
+                    </>
+                  );
+                })}
+                {restaurant.drinksmenu.map((menu, idx) => {
+                  return (
+                    <>
+                      {menu.items.length > 0 ? (
+                        <h1>{menu.categories.name}</h1>
+                      ) : (
+                        ""
+                      )}
+                      <Items
+                        restaurant={restaurant}
+                        type="drinks"
+                        items={menu.items}
+                        key={idx}
+                      />
+                    </>
+                  );
+                })}
               </>
-            ) : (  
-              <p>Restaurant items not found.</p>  
-            )}  
+            ) : (
+              <p>Restaurant items not found.</p>
+            )}
           </div>
         </div>
       </Layout>

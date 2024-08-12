@@ -1,0 +1,50 @@
+@import './variables'; // Nhập các biến vào tệp SCSS  
+*{
+    padding: 0;  
+    margin: 0;
+    box-sizing: border-box;
+}
+html,  
+body {  
+  height: 100%;   
+  background: $background-color;   
+  font-family: $font-family;  
+}  
+
+.sectionContainer {  
+  width: 100%;  
+  max-width: $max-width;  
+  margin: 0 auto;  
+
+  @media (max-width: $breakpoint-tablet) {  
+    padding: 0 20px; 
+  }  
+
+  @media (max-width: $breakpoint-mobile) {  
+    padding: 0 10px;   
+  }  
+}  
+
+.sectionContent {  
+  padding: 0 40px;  
+
+  @media (max-width: $breakpoint-tablet) {  
+    padding: 0 20px;  
+  }  
+
+  @media (max-width: $breakpoint-mobile) {  
+    padding: 0 10px; 
+  }  
+}  
+
+.ant-card.ant-card-bordered.ant-card-hoverable.css-dev-only-do-not-override-1pg9a38.aos-init.aos-animate {  
+  margin: 0 auto;  
+
+  @media (max-width: $breakpoint-tablet) {  
+    width: 90%;   
+  }  
+
+  @media (max-width: $breakpoint-mobile) {  
+    width: 100%;  
+  }  
+}
