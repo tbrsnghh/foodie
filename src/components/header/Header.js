@@ -9,9 +9,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { fetchRestaurants } from "../../store/features/food/foodSlice";
 import SearchBar from "../searchBar/SearchBar";
-import Search from "antd/es/input/Search";
-import SearchRes from "../searchBar/SearchRes";
 import CartSlider from "../cartSlider/CartSlider";
+import './header.css'
 const { useToken } = theme;
 const { useBreakpoint } = Grid;
 
@@ -30,10 +29,10 @@ export default function App() {
     setCurrent(e.key);
   };
   // cart
-  const [isCartVisible, setCartVisible] = useState(false);
-  const handleCartToggle = () => {
-    setCartVisible(!isCartVisible);
-  };
+  // const [isCartVisible, setCartVisible] = useState(false);
+  // const handleCartToggle = () => {
+  //   setCartVisible(!isCartVisible);
+  // };
   const Navigate = useNavigate();
   const handleChheckout = ()=>{
     Navigate(`/cart`);  
@@ -167,17 +166,19 @@ export default function App() {
             <ShoppingCartOutlined
               
               style={styles.cart}
-              onClick={handleCartToggle}
-              onDoubleClick={handleChheckout}
+              //onClick={handleCartToggle}
+              onClick={handleChheckout}
             />
-            {isCartVisible && (
-              <div>
-                <CartSlider setIsVisible={setCartVisible}/> {/* Đảm bảo CartSlider nằm trong div này */}
-              </div>
-            )}
           </Space>
         </div>
       </nav>
     </>
   );
 }
+
+
+// {isCartVisible && (
+//   <div>
+//     <CartSlider setIsVisible={setCartVisible}/> {/* Đảm bảo CartSlider nằm trong div này */}
+//   </div>
+// )}

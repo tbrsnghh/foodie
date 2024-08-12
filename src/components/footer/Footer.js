@@ -6,59 +6,50 @@ const { Footer } = Layout;
 
 export default function Footerr() {
   return (
-    <Footer
-      style={{
-        backgroundColor: "white",
-        color: "#001529",
-        padding: "40px 0",
-        marginTop: "20px",
-      }}
-    >
+    <Footer>
       <div className="sectionContainer">
         <div className="sectionContent">
           <Row gutter={16}>
             <Col span={6}>
-              <h3>Company</h3>
+              <h3>Cappy</h3>
               <ul>
                 <li>
-                  <a href="#about">About Us</a>
+                  <a href="#about">Về chúng tôi</a>
                 </li>
                 <li>
-                  <a href="#contact">Contact Us</a>
+                  <a href="#contact">Liên hệ</a>
                 </li>
                 <li>
-                  <a href="#reservation">Reservation</a>
+                  <a href="#privacy">Chính sách</a>
                 </li>
                 <li>
-                  <a href="#privacy">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#terms">Terms & Condition</a>
+                  <a href="#terms">Điều kiện & điều khoản</a>
                 </li>
               </ul>
             </Col>
             <Col span={6}>
-              <h3>Contact</h3>
-              <p>123 Street, New York, USA</p>
-              <p>+12 345 67890</p>
-              <p>info@example.com</p>
+              <h3>Liên hệ</h3>
+              <p>123 Lê Duẩn, Quận 1, TP. HCM</p>
+              <p>012 345 6789</p>
+              <p>cappy@gmail.com</p>
             </Col>
             <Col span={6}>
-              <h3>Opening</h3>
-              <p>Monday - Saturday: 09AM - 09PM</p>
-              <p>Sunday: 10AM - 08PM</p>
+              <h3>Đối tác bán hàng</h3>
+              
+              <p>Nhà hàng</p>
+              <p>Hộ kinh doanh</p>
             </Col>
             <Col span={6}>
-              <h3>Newsletter</h3>
+              <h3>Đăng ký</h3>
               <Input
-                placeholder="Your Email"
+                placeholder="Email"
                 style={{ marginBottom: "10px" }}
               />
-              <Button type="primary">SIGN UP</Button>
+              <Button type="primary">Đăng ký</Button>
             </Col>
           </Row>
-          <div style={{ textAlign: "center", marginTop: "20px" }}>
-            © 2023 Your Site Name. All Rights Reserved. Designed by HTML Codex.
+          <div style={{ textAlign: "center", marginTop: "10px" }}>
+            © 2024 Cappy Food
           </div>
         </div>
       </div>

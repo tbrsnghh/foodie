@@ -23,6 +23,9 @@ export default function Categories() {
                 background: "none",  
                 marginTop: 10,  
               }}  
+              data-aos="fade-up"
+              data-aos-delay={index * 100}
+              data-aos-once="false"
               cover={  
                 <img  
                   alt={item.name}  

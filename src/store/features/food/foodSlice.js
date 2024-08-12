@@ -94,20 +94,20 @@ const foodSlice = createSlice({
         state.restaurants.forEach((restaurant) => {
           restaurant.foodmenu.forEach((category) => {
             if (!foodCategoriesMap[category.categories.name]) {
-              foodCategoriesMap[category.categories.name] = category.categories; // hoặc lấy category.name nếu chỉ cần tên
+              foodCategoriesMap[category.categories.name] = category.categories; 
             }
           });
 
           restaurant.drinksmenu.forEach((category) => {
             if (!drinksCategoriesMap[category.categories.name]) {
-              drinksCategoriesMap[category.categories.name] =
-                category.categories; // hoặc lấy category.name nếu chỉ cần tên
+              drinksCategoriesMap[category.categories.name] = category.categories; 
             }
           });
         });
 
         state.food = Object.values(foodCategoriesMap);
         state.drinks = Object.values(drinksCategoriesMap);
+        state.uniqueCategories = [...state.food,...state.drinks]
       })
       .addCase(fetchRestaurants.rejected, (state, action) => {
         state.status = "failed";

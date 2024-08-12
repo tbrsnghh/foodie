@@ -5,6 +5,7 @@ import Header from "../header/Header";
 import { Layout } from "antd";
 import "./restaurants.css";
 import Swiper from "../swiper/Swiper";
+import Items from "../items/Items";
 export default function Restaurants(props) {
   const index = useParams().index;
   console.log(index);
@@ -45,7 +46,7 @@ export default function Restaurants(props) {
               {
                 restaurant.foodmenu.map((menu, idx) => {  
                   return ( // Thêm `return` ở đây để trả về JSX  
-                    <Swiper  
+                    <Items  
                       restaurant={restaurant}  
                       type="food"  
                       items={menu.items}  

@@ -85,7 +85,7 @@ export default function Home(props) {
 
           <div className="sectionContent">
             <h1>
-              Ưu đãi tại <span style={{ color: "#ED2B2A" }}>Hồ Chí Minh</span>
+              Ưu đãi tại <span style={{ color: "#007bff" }}>Hồ Chí Minh</span>
             </h1>
             {restaurants.length > 0 ? (
               <Swiper restaurant={restaurants[0]} type="food" items={restaurants[0].foodmenu[0].items} />
@@ -97,8 +97,8 @@ export default function Home(props) {
         <div className="sectionContainer">
           <div className="sectionContent">
             <h1>
-              There's <span style={{ color: "#ED2B2A" }}>something</span> for
-              <span style={{ color: "#ED2B2A" }}> everyone ! </span>
+              Có <span style={{ color: "#007bff" }}>vài thứ</span> bạn
+              <span style={{ color: "#007bff" }}> muốn ! :)) </span>
             </h1>
             <Categories/>
           </div>

@@ -4,10 +4,10 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Avatar, Card, Space } from "antd";
 import Meta from "antd/es/card/Meta";
-import '../swiper/swiper.css'
+import "./swiper.css";
 import { addToCart } from "../../store/features/cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
-const FoodSlider = (props) => {
+const Items = (props) => {
   const dispatch = useDispatch()
 
   const cart = useSelector((state) => state.cart)
@@ -109,4 +109,4 @@ const FoodSlider = (props) => {
   );
 };
 
-export default FoodSlider;
+export default Items;

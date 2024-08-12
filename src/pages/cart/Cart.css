@@ -1,6 +1,7 @@
 .cart-container {  
     max-width: 800px;  
-    margin: 0 auto;  
+    height: fit-content;
+    margin: 20px auto;  
     padding: 20px;  
     background-color: #D1E9F6; 
     border-radius: 8px;  

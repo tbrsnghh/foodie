@@ -1,13 +1,16 @@
 /* Footer.css */
 footer {
-  background-color: white; /* Màu nền */
-  color: #001529; /* Màu chữ */
   
+  width: 100%;
+  background-color: #F1EEDC !important; /* Màu nền */
+  color: #001529; /* Màu chữ */
   bottom: 0;
+  padding: 40px 0px;
+  margin-top: 20px;
 }
 
 footer h3 {
-  color: #ffa500; /* Màu tiêu đề */
+  color: #007bff; /* Màu tiêu đề */
 }
 
 footer ul {

@@ -1,168 +1,368 @@
-{  
-  "food": [  
-    {  
-      "categories": "chicken",  
-      "items": [  
-        {  
-          "id": "CH01",  
-          "name": "Cánh gà chiên",  
-          "price": 80000,  
-          "res_id": "RES01",  
-          "desc": "Cánh gà chiên ngon lắm",  
-          "img": ""  
-        },  
-        {  
-          "id": "CH02",  
-          "name": "Đùi gà chiên",  
-          "price": 180000,  
-          "res_id": "RES02",  
-          "desc": "Đùi gà chiên cx ngon lắm",  
-          "img": ""  
-        }  
-      ]  
-    },  
-    {  
-      "categories": "pizza",  
-      "items": []  
-    },  
-    {  
-      "categories": "breakfast",  
-      "items": []  
-    },  
-    {  
-      "categories": "Cơm",  
-      "items": []  
-    },  
-    {  
-      "categories": "Cháo",  
-      "items": []  
-    },  
-    {  
-      "categories": "Ăn vặt",  
-      "items": []  
-    },  
-    {  
-      "categories": "Rau trộn",  
-      "items": []  
-    },  
-    {  
-      "categories": "Cơm tấm",  
-      "items": []  
-    }  
-  ],  
-  "drinks": [  
-    {  
-      "categories": "soft drinks",  
-      "items": [  
-        {  
-          "id": "D01",  
-          "name": "Coca Cola",  
-          "price": 15000,  
-          "res_id": "RES03",  
-          "desc": "Nước ngọt Coca Cola mát lạnh",  
-          "img": ""  
-        },  
-        {  
-          "id": "D02",  
-          "name": "Pepsi",  
-          "price": 15000,  
-          "res_id": "RES03",  
-          "desc": "Nước ngọt Pepsi tươi mát",  
-          "img": ""  
-        }  
-      ]  
-    },  
-    {  
-      "categories": "alcoholic beverages",  
-      "items": [  
-        {  
-          "id": "D03",  
-          "name": "Bia Tiger",  
-          "price": 20000,  
-          "res_id": "RES04",  
-          "desc": "Bia Tiger giải khát",  
-          "img": ""  
-        },  
-        {  
-          "id": "D04",  
-          "name": "Rượu vang",  
-          "price": 250000,  
-          "res_id": "RES05",  
-          "desc": "Rượu vang ngon miệng",  
-          "img": ""  
-        }  
-      ]  
-    },  
-    {  
-      "categories": "fresh juices",  
-      "items": [  
-        {  
-          "id": "D05",  
-          "name": "Nước cam tươi",  
-          "price": 30000,  
-          "res_id": "RES06",  
-          "desc": "Nước cam tươi mát bổ",  
-          "img": ""  
-        },  
-        {  
-          "id": "D06",  
-          "name": "Nước ép táo",  
-          "price": 30000,  
-          "res_id": "RES06",  
-          "desc": "Nước ép táo thơm ngon",  
-          "img": ""  
-        }  
-      ]  
-    }  
-  ],  
-  "restaurants": [  
-    {  
-      "name": "Nhà hàng Đông Dương",  
-      "id": "RES01",  
-      "address": "123 Đường Đông Dương, Quận 1",  
-      "cuisine": "Vietnamese, Dessert",  
-      "rating": 4.5,  
-      "img": ""  
-    },  
-    {  
-      "name": "Pizza Vua",  
-      "id": "RES02",  
-      "address": "456 Đường Pizza, Quận 3",  
-      "cuisine": "Italian",  
-      "rating": 4.7,  
-      "img": ""  
-    },  
-    {  
-      "name": "Quán Ăn Vặt",  
-      "id": "RES03",  
-      "address": "789 Đường Ăn Vặt, Quận 2",  
-      "cuisine": "Snack",  
-      "rating": 4.3,  
-      "img": ""  
-    },  
-    {  
-      "name": "Nhà hàng Hải Sản",  
-      "id": "RES04",  
-      "address": "101 Đường Hải Sản, Quận 4",  
-      "cuisine": "Seafood",  
-      "rating": 4.8,  
-      "img": ""  
-    },  
-    {  
-      "name": "Nem Nướng",  
-      "id": "RES05",  
-      "address": "202 Đường Nem Nướng, Quận 5",  
-      "cuisine": "Vietnamese",  
-      "rating": 4.6,  
-      "img": ""  
-    },  
-    {  
-      "name": "Nhà hàng Rượu Vang",  
-      "id": "RES06",  
-      "address": "303 Đường Rượu Vang, Quận 6",  
-      "cuisine": "Western",  
-      "rating": 4.9,  
-      "img": ""  
-    }  
-  ]  
+{
+  "restaurants": [
+    {
+      "id": "RES01",
+      "name": "Nhà hàng Đông Dương",
+      "cuisine": "Vietnamese, Dessert",
+      "address": "123 Đường Đông Dương, Quận 1",
+      "Opening": [{ "time": "00:00-05:30" }, { "time": "08:00-23:59" }],
+      "rating": 4.5,
+      "img": "",
+      "promotions": "",
+      "foodmenu": [
+        {
+          "categories": {
+            "name": "chicken",
+            "img": "https://dulichmy.com.vn/wp-content/uploads/2021/12/ga-ran-7.jpg"
+          },
+          "items": [
+            {
+              "id": "CH01",
+              "name": "Cánh gà chiên",
+              "price": 80000,
+              "desc": "Cánh gà chiên ngon lắm",
+              "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQH1F0vtc7RkOvMToLgdusGgchQTjmZPPRcA&s"
+            },
+            {
+              "id": "CH02",
+              "name": "Đùi gà chiên",
+              "price": 180000,
+              "desc": "Đùi gà chiên cx ngon lắm",
+              "img": "https://garanfkt.vn/public/uploads/trang-tri-ga-ran-jollibee_1710987528.jpg"
+            },
+            {
+              "id": "CH03",
+              "name": "Gà rán",
+              "price": 120000,
+              "desc": "Gà rán giòn tan",
+              "img": "https://donchicken.vn/pub/media/catalog/product/cache/8872124951f387c8ded3f228faa55bea/g/_/g_r_n_5-1_1.jpg"
+            },
+            {
+              "id": "CH04",
+              "name": "Gà nướng",
+              "price": 150000,
+              "desc": "Gà nướng thơm ngon",
+              "img": "https://cdn.tgdd.vn/Files/2020/09/09/1288523/7-cach-uop-ga-nuong-sieu-ngon-chi-voi-muoi-ot-mat-ong-202112300913287451.jpg"
+            },
+            {
+              "id": "CH05",
+              "name": "Gà xào sả ớt",
+              "price": 100000,
+              "desc": "Gà xào sả ớt cay nồng",
+              "img": "https://beptruong.edu.vn/wp-content/uploads/2013/01/ga-xao-sa-ot.jpg"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "pizza",
+            "img": "https://www.mashed.com/img/gallery/how-authentic-pizza-is-different-from-the-american-version/l-intro-1606849151.jpg"
+          },
+          "items": [
+            {
+              "id": "PI01",
+              "name": "Pizza bò",
+              "price": 162000,
+              "desc": "Pizza mua 1 tính tiền 1",
+              "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR0Lj3_8eh0xYQLDhyh1pYwOF6l00mL7hIfww&s"
+            },
+            {
+              "id": "PI02",
+              "name": "Pizza hải sản",
+              "price": 180000,
+              "desc": "Pizza mua 1 tính tiền 2",
+              "img": "https://cdn.tgdd.vn/2020/08/CookProduct/Untitled-1-1200x676-41.jpg"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "breakfast",
+            "img": "https://www.watermelon.org/wp-content/uploads/2023/02/Sandwich_2023.jpg"
+          },
+          "items": []
+        },
+        {
+          "categories": {
+            "name": "Cơm",
+            "img": "https://cdn.tgdd.vn/2021/06/CookProduct/mcmn-1200x676.jpg"
+          },
+          "items": []
+        },
+        {
+          "categories": {
+            "name": "Cháo",
+            "img": "https://cdn.tgdd.vn/2021/06/CookProduct/chaohenxaocay-1200x676.jpg"
+          },
+          "items": []
+        },
+        {
+          "categories": {
+            "name": "Ăn vặt",
+            "img": "https://static.vinwonders.com/production/an-vat-sai-gon-2.jpg"
+          },
+          "items": []
+        },
+        {
+          "categories": {
+            "name": "Rau trộn",
+            "img": "https://cdn.buffetposeidon.com/app/media/Kham-pha-am-thuc/04.2024/120424-3-mon-salad-buffet-poseidon-04.jpg"
+          },
+          "items": []
+        },
+        {
+          "categories": {
+            "name": "Cơm tấm",
+            "img": "https://nvhphunu.vn/wp-content/uploads/2023/10/com-tam-1.webp"
+          },
+          "items": []
+        }
+      ],
+      "drinksmenu": [
+        {
+          "categories": {
+            "name": "Soft drinks",
+            "img": "https://preview.redd.it/fizzy-drinks-v0-yyr6vtruhzbb1.jpg?width=1080&crop=smart&auto=webp&s=e2334d786bff00150de9989c892846864873149a"
+          },
+          "items": [
+            {
+              "id": "D01",
+              "name": "Coca Cola",
+              "price": 15000,
+              "desc": "Nước ngọt Coca Cola mát lạnh",
+              "img": "https://tea-3.lozi.vn/v1/ship/resized/losupply-tien-giang-thanh-pho-my-tho-tien-giang-1648799338251238359-nuoc-ngot-coca-cola-lon-320ml-0-1658289667?w=480&type=o"
+            },
+            {
+              "id": "D02",
+              "name": "Pepsi",
+              "price": 15000,
+              "desc": "Nước ngọt Pepsi tươi mát",
+              "img": "https://product.hstatic.net/1000166699/product/16568750047262_1__a06cae5281e14da68881f7c87b67116e_master.jpg"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "alcoholic beverages",
+            "img": "https://i.insider.com/5b54c7ee51dfbe48058b4579?width=700"
+          },
+          "items": [
+            {
+              "id": "D03",
+              "name": "Bia Tiger",
+              "price": 20000,
+              "desc": "Bia Tiger giải khát",
+              "img": "https://lh3.googleusercontent.com/iqKM4-SpVYjgdNp-TzKySPZL02qMQB1sl-wU_8fnf6YNc3smILqfRnUWyIUs7nrdhfyn-d_68xqp3FgPA3ccdypTY4KRVe07=rw"
+            },
+            {
+              "id": "D04",
+              "name": "Rượu vang",
+              "price": 250000,
+              "desc": "Rượu vang ngon miệng",
+              "img": "https://hedon.com.vn/wp-content/uploads/2023/05/Ruou-vang-do-Parducci-True-Grit-Red-Blend-Reserve.png"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "fresh juices",
+            "img": "https://static.toiimg.com/photo/75122042.cms"
+          },
+          "items": [
+            {
+              "id": "D05",
+              "name": "Nước cam tươi",
+              "price": 30000,
+              "desc": "Nước cam tươi mát bổ",
+              "img": "https://cookbeo.com/media/2021/06/nuoc-cam-ep/nuoc-cam-ep-5x7.jpg"
+            },
+            {
+              "id": "D06",
+              "name": "Nước ép táo",
+              "price": 30000,
+              "desc": "Nước ép táo thơm ngon",
+              "img": "https://product.hstatic.net/200000388411/product/f61-nuocep-apple_c1d64b8d1d2f41dfae0f3ba725e4248f.png"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "RES02",
+      "name": "Nhà hàng Hoa Sen",
+      "cuisine": "Vietnamese, Seafood",
+      "address": "456 Đường Hoa Sen, Quận 3, Thành phố Hồ Chí Minh",
+      "Opening": [
+        { "time": "07:00-22:00", "day": "Monday-Friday" },
+        { "time": "08:00-23:00", "day": "Saturday-Sunday" }
+      ],
+      "rating": 4.2,
+      "review_count": 125,
+      "img": "https://example.com/nhahang-hoasen.jpg",
+      "promotions": "Mua 2 tặng 1 trong tháng này",
+      "phone": "+84 123 456 7890",
+      "website": "https://hoasenrestaurant.com",
+      "social_media": {
+        "facebook": "https://facebook.com/hoasenrestaurant",
+        "instagram": "https://instagram.com/hoasenrestaurant"
+      },
+      "ambience": "Elegant, Family-friendly, Romantic",
+      "features": [
+        "Outdoor seating",
+        "Live music on weekends",
+        "Free Wifi",
+        "Parking available"
+      ],
+      "foodmenu": [
+        {
+          "categories": {
+            "name": "chicken",
+            "img": "https://dulichmy.com.vn/wp-content/uploads/2021/12/ga-ran-7.jpg"
+          },
+          "items": [
+            {
+              "id": "CH01",
+              "name": "Cánh gà chiên",
+              "price": 80000,
+              "desc": "Cánh gà chiên ngon lắm",
+              "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRQH1F0vtc7RkOvMToLgdusGgchQTjmZPPRcA&s"
+            },
+            {
+              "id": "CH02",
+              "name": "Đùi gà chiên",
+              "price": 180000,
+              "desc": "Đùi gà chiên cx ngon lắm",
+              "img": "https://garanfkt.vn/public/uploads/trang-tri-ga-ran-jollibee_1710987528.jpg"
+            },
+            {
+              "id": "CH03",
+              "name": "Gà rán",
+              "price": 120000,
+              "desc": "Gà rán giòn tan",
+              "img": "https://donchicken.vn/pub/media/catalog/product/cache/8872124951f387c8ded3f228faa55bea/g/_/g_r_n_5-1_1.jpg"
+            },
+            {
+              "id": "CH04",
+              "name": "Gà nướng",
+              "price": 150000,
+              "desc": "Gà nướng thơm ngon",
+              "img": "https://cdn.tgdd.vn/Files/2020/09/09/1288523/7-cach-uop-ga-nuong-sieu-ngon-chi-voi-muoi-ot-mat-ong-202112300913287451.jpg"
+            },
+            {
+              "id": "CH05",
+              "name": "Gà xào sả ớt",
+              "price": 100000,
+              "desc": "Gà xào sả ớt cay nồng",
+              "img": "https://lh3.googleusercontent.com/proxy/mlyi8yoRbNiBXe5ledCDiM8l6DcR1fz85Ph_5yfZhXZKcLImiq14UjZ9lA_B-y6KvW6pcq40v9eVDg7RRZbd8gacwOaTDZ62BlqEdKwm7c_2yGVY81-5O6fiD9bTl7JbZLjTcNVGw4GnCFuBQoVvBMS57pep3U9afRWOgyT0cNCzlF42_g35"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "seafood",
+            "img": "https://www.cameronsseafood.com/wp-content/uploads/2019/01/seafoodhealthy.jpg"
+          },
+          "items": [
+            {
+              "id": "SF01",
+              "name": "Cá hồi nướng",
+              "price": 250000,
+              "desc": "Cá hồi tươi ngon, nướng vàng giòn, được tẩm ướp gia vị theo công thức độc quyền của nhà hàng.",
+              "img": "https://cdn.tgdd.vn/Files/2020/03/19/1243099/ca-hoi-nuong-bo-toi-thom-ngon-giau-duong-chat-lai-lam-cuc-de-dang-202003190933577877.jpg"
+            },
+            {
+              "id": "SF02",
+              "name": "Tôm hấp xả",
+              "price": 180000,
+              "desc": "Tôm tươi hấp cùng xả, thơm ngon, giữ trọn vị ngọt của tôm.",
+              "img": "https://i-giadinh.vnecdn.net/2023/12/13/Bc4Thnhphm4-1702459482-3542-1702459600.jpg"
+            },
+            {
+              "id": "SF03",
+              "name": "Ghẹ rang muối",
+              "price": 300000,
+              "desc": "Ghẹ tươi rang với muối ớt, thơm ngon, đậm đà.",
+              "img": "https://file.hstatic.net/1000030244/file/cang-ghe-rang-muoi-ot_grande.png"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "Cơm tấm",
+            "img": "https://nvhphunu.vn/wp-content/uploads/2023/10/com-tam-1.webp"
+          },
+          "items": [
+            {
+              "id": "RI01",
+              "name": "Cơm chiên dương châu",
+              "price": 70000,
+              "desc": "Cơm chiên với hải sản và rau quả, đậm đà hương vị.",
+              "img": "https://cdn.tgdd.vn/Files/2019/12/30/1229114/cach-lam-com-chien-duong-chau-sieu-hap-dan-chong-ngan-ngay-tet-hat-com-vang-uom-toi-va-tham-vi-202203031505257988.jpg"
+            },
+            {
+              "id": "RI02",
+              "name": "Cơm tấm sườn",
+              "price": 50000,
+              "desc": "Cơm tấm được nấu từ gạo tấm, ăn kèm với sườn nướng và các loại rau sống.",
+              "img": "https://vcdn1-giadinh.vnecdn.net/2024/03/07/7Honthinthnhphm1-1709800144-8583-1709800424.jpg?w=0&h=0&q=100&dpr=2&fit=crop&s=yflkT1zyARjnO_PPyQYBoA"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "noodles",
+            "img": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTwrckGRfXl3A9JtIDT0jPe7rBxpCAZKuE2w&s"
+          },
+          "items": [
+            {
+              "id": "NO01",
+              "name": "Bún chả",
+              "price": 60000,
+              "desc": "Bún chả với chả nướng thơm ngon, nước chấm đậm đà.",
+              "img": "https://www.seriouseats.com/thmb/J0g7JWjk9r6CHESo1CIrD1BfGd0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/20231204-SEA-VyTran-BunChaHanoi-19-f623913c6ef34a9185bcd6e5680c545f.jpg"
+            }
+          ]
+        }
+      ],
+      "drinksmenu": [
+        {
+          "categories": {
+            "name": "Soft drinks",
+            "img": "https://preview.redd.it/fizzy-drinks-v0-yyr6vtruhzbb1.jpg?width=1080&crop=smart&auto=webp&s=e2334d786bff00150de9989c892846864873149a"
+          },
+          "items": [
+            {
+              "id": "D07",
+              "name": "Trà đá",
+              "price": 10000,
+              "desc": "Trà đá mát lạnh, được pha chế từ trà xanh nguyên chất.",
+              "img": "https://cdn-i.vtcnews.vn/resize/th/upload/2024/02/03/thoi-diem-tot-nhat-de-uong-tra-xanh-7abe67de2-16404176.jpeg"
+            },
+            {
+              "id": "D08",
+              "name": "Nước ép trái cây",
+              "price": 20000,
+              "desc": "Nước ép trái cây tươi ngon, nhiều loại trái cây để lựa chọn.",
+              "img": "https://cdn.nhathuoclongchau.com.vn/unsafe/800x0/filters:quality(95)/https://cms-prod.s3-sgn09.fptcloud.com/Nuoc_ep_trai_cay_dong_chai_866ba3b13c.jpg"
+            }
+          ]
+        },
+        {
+          "categories": {
+            "name": "alcoholic beverages",
+            "img": "https://i.insider.com/5b54c7ee51dfbe48058b4579?width=700"
+          },
+          "items": [
+            {
+              "id": "D09",
+              "name": "Bia hơi",
+              "price": 15000,
+              "desc": "Bia hơi mát lạnh, phù hợp cho những buổi tụ tập bạn bè.",
+              "img": "https://rgb.vn/wp-content/uploads/2023/11/8188018_tinhte-bia-hoi-glass-4.webp"
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
